@@ -68,7 +68,34 @@ padding:80px 10%;
 .title{
 text-align:center;
 font-size:42px;
+margin-bottom:15px;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#7a6355;
 margin-bottom:50px;
+}
+
+/* ---- PROMO BANNER ---- */
+.promo{
+background:linear-gradient(90deg,#d58b36,#f2a94d);
+color:white;
+text-align:center;
+padding:22px 10%;
+font-size:22px;
+font-weight:600;
+letter-spacing:.5px;
+}
+
+.promo span{
+display:inline-block;
+background:rgba(255,255,255,.2);
+padding:6px 16px;
+border-radius:30px;
+margin-left:10px;
+font-size:16px;
 }
 
 .products{
@@ -78,6 +105,7 @@ gap:30px;
 }
 
 .card{
+position:relative;
 background:white;
 border-radius:20px;
 overflow:hidden;
@@ -96,12 +124,37 @@ object-fit:cover;
 }
 
 .card h3{
-padding:15px;
+padding:15px 15px 0;
 }
 
 .card p{
-padding:0 15px 20px;
+padding:5px 15px 10px;
 color:#666;
+}
+
+.price{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 15px 20px;
+}
+
+.price span{
+font-weight:700;
+color:#d58b36;
+font-size:18px;
+}
+
+.tag{
+position:absolute;
+top:15px;
+left:15px;
+background:#d58b36;
+color:white;
+padding:5px 14px;
+border-radius:20px;
+font-size:13px;
+font-weight:600;
 }
 
 .about{
@@ -199,28 +252,75 @@ padding:25px;
 
 </header>
 
+<div class="promo">
+🎉 Buy 3 Cookies, Get 1 FREE! <span>Mix & match any flavor</span>
+</div>
+
 <section id="menu">
 
-<h2 class="title">Our Best Sellers</h2>
+<h2 class="title">Our Menu</h2>
+<p class="subtitle">Handmade daily • Buy 3 get 1 free on every order</p>
 
 <div class="products">
 
 <div class="card">
+<span class="tag">Best Seller</span>
 <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80">
 <h3>Nutella Cookie</h3>
 <p>Loaded with creamy Nutella.</p>
+<div class="price"><span>25 DH</span></div>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80">
 <h3>Lotus Biscoff</h3>
 <p>Filled with Lotus spread.</p>
+<div class="price"><span>25 DH</span></div>
+</div>
+
+<div class="card">
+<span class="tag">Best Seller</span>
+<img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=800&q=80">
+<h3>Kinder Bueno</h3>
+<p>Crunchy, creamy and irresistible.</p>
+<div class="price"><span>28 DH</span></div>
+</div>
+
+<div class="card">
+<span class="tag">New</span>
+<img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80">
+<h3>Blueberry Pistachio</h3>
+<p>Sweet blueberries with crunchy pistachio bits.</p>
+<div class="price"><span>27 DH</span></div>
+</div>
+
+<div class="card">
+<span class="tag">New</span>
+<img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80">
+<h3>Chocolate Milka</h3>
+<p>Stuffed with melted Milka chocolate.</p>
+<div class="price"><span>28 DH</span></div>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=800&q=80">
-<h3>Kinder Bueno</h3>
-<p>Crunchy, creamy and irresistible.</p>
+<h3>M&M's Cookie</h3>
+<p>Colorful and crunchy M&M's baked in every bite.</p>
+<div class="price"><span>25 DH</span></div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80">
+<h3>White Chocolate & Pistachio</h3>
+<p>Smooth white chocolate with roasted pistachio.</p>
+<div class="price"><span>27 DH</span></div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80">
+<h3>Double Chocolate Oreo</h3>
+<p>Rich cocoa dough packed with crushed Oreo.</p>
+<div class="price"><span>26 DH</span></div>
 </div>
 
 </div>
@@ -244,6 +344,7 @@ Our goal is simple: make every bite unforgettable.
 <div class="feature">🍫 Premium Chocolate</div>
 <div class="feature">❤️ Homemade</div>
 <div class="feature">🚚 Fast Delivery</div>
+<div class="feature">🎁 Buy 3 Get 1 Free</div>
 
 </div>
 
