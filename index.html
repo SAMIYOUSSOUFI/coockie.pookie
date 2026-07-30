@@ -55,10 +55,19 @@ text-decoration:none;
 border-radius:50px;
 font-weight:bold;
 transition:.3s;
+border:none;
+cursor:pointer;
+font-size:16px;
+font-family:Poppins,sans-serif;
 }
 
 .btn:hover{
 background:#b06b20;
+}
+
+.btn:disabled{
+background:#c9a377;
+cursor:not-allowed;
 }
 
 section{
@@ -185,6 +194,159 @@ font-weight:600;
 box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
+/* ---- SPIN TO WIN ---- */
+.spin-section{
+background:#3b2418;
+color:white;
+text-align:center;
+}
+
+.spin-section .title{
+color:white;
+}
+
+.spin-section .subtitle{
+color:#e9cdb4;
+}
+
+.wheel-wrap{
+position:relative;
+width:340px;
+height:340px;
+margin:20px auto 40px;
+}
+
+.pointer{
+position:absolute;
+top:-8px;
+left:50%;
+transform:translateX(-50%);
+width:0;
+height:0;
+border-left:18px solid transparent;
+border-right:18px solid transparent;
+border-top:32px solid #ffce54;
+z-index:5;
+filter:drop-shadow(0 3px 3px rgba(0,0,0,.4));
+}
+
+.wheel{
+width:100%;
+height:100%;
+border-radius:50%;
+position:relative;
+border:8px solid #ffce54;
+box-shadow:0 0 0 6px #3b2418, 0 10px 40px rgba(0,0,0,.5);
+background:conic-gradient(
+#d58b36 0deg 45deg,
+#f2a94d 45deg 90deg,
+#7a4a2b 90deg 135deg,
+#e2b25c 135deg 180deg,
+#d58b36 180deg 225deg,
+#f2a94d 225deg 270deg,
+#7a4a2b 270deg 315deg,
+#e2b25c 315deg 360deg
+);
+transition:transform 4.5s cubic-bezier(.17,.67,.14,1);
+}
+
+.wheel-label{
+position:absolute;
+top:50%;
+left:50%;
+width:150px;
+text-align:center;
+font-size:14px;
+font-weight:700;
+color:white;
+text-shadow:0 1px 3px rgba(0,0,0,.5);
+transform-origin:left center;
+}
+
+.hub{
+position:absolute;
+top:50%;
+left:50%;
+width:56px;
+height:56px;
+background:#ffce54;
+border-radius:50%;
+transform:translate(-50%,-50%);
+z-index:4;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+box-shadow:0 3px 10px rgba(0,0,0,.4);
+}
+
+.spin-note{
+font-size:15px;
+color:#e9cdb4;
+margin-top:-15px;
+margin-bottom:10px;
+}
+
+/* ---- RESULT MODAL ---- */
+.modal-overlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.65);
+align-items:center;
+justify-content:center;
+z-index:100;
+padding:20px;
+}
+
+.modal-overlay.show{
+display:flex;
+}
+
+.modal-box{
+background:white;
+color:#3b2418;
+border-radius:24px;
+max-width:380px;
+width:100%;
+padding:40px 30px;
+text-align:center;
+animation:pop .35s ease;
+}
+
+@keyframes pop{
+from{transform:scale(.7);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.modal-box .emoji{
+font-size:60px;
+margin-bottom:10px;
+}
+
+.modal-box h3{
+font-size:26px;
+margin-bottom:10px;
+color:#d58b36;
+}
+
+.modal-box p{
+font-size:16px;
+color:#666;
+margin-bottom:25px;
+}
+
+.modal-box .code{
+display:inline-block;
+background:#fff5e8;
+border:2px dashed #d58b36;
+padding:8px 20px;
+border-radius:10px;
+font-weight:700;
+letter-spacing:1px;
+margin-bottom:20px;
+}
+
 .contact{
 text-align:center;
 background:#3b2418;
@@ -230,6 +392,11 @@ background:#2b1a16;
 color:white;
 text-align:center;
 padding:25px;
+}
+
+@media (max-width:420px){
+.wheel-wrap{width:280px;height:280px;}
+.wheel-label{width:120px;font-size:12px;}
 }
 
 </style>
@@ -350,6 +517,30 @@ Our goal is simple: make every bite unforgettable.
 
 </section>
 
+<section class="spin-section">
+
+<h2 class="title">🎡 Spin & Win</h2>
+<p class="subtitle">One free spin per visit — good luck!</p>
+
+<div class="wheel-wrap">
+<div class="pointer"></div>
+<div class="wheel" id="wheel">
+<div class="wheel-label" style="transform:rotate(22.5deg) translateX(60px);">🍪 Free Cookie</div>
+<div class="wheel-label" style="transform:rotate(67.5deg) translateX(60px);">10% Off</div>
+<div class="wheel-label" style="transform:rotate(112.5deg) translateX(60px);">😅 Try Again</div>
+<div class="wheel-label" style="transform:rotate(157.5deg) translateX(60px);">🚚 Free Delivery</div>
+<div class="wheel-label" style="transform:rotate(202.5deg) translateX(60px);">20% Off</div>
+<div class="wheel-label" style="transform:rotate(247.5deg) translateX(60px);">🎁 Surprise Gift</div>
+<div class="wheel-label" style="transform:rotate(292.5deg) translateX(60px);">5% Off</div>
+<div class="wheel-label" style="transform:rotate(337.5deg) translateX(60px);">🍪 Free Cookie</div>
+</div>
+<div class="hub">🍪</div>
+</div>
+
+<button class="btn" id="spinBtn" onclick="spinWheel()">Spin the Wheel</button>
+
+</section>
+
 <section class="contact">
 
 <h2>Order Now 🍪</h2>
@@ -377,6 +568,94 @@ Instagram
 © 2026 Cookie Pookie • Freshly Baked With Love 🤎
 
 </footer>
+
+<!-- ---- RESULT MODAL ---- -->
+<div class="modal-overlay" id="modalOverlay">
+<div class="modal-box">
+<div class="emoji" id="resultEmoji">🎉</div>
+<h3 id="resultTitle">You Won!</h3>
+<p id="resultText">Here's your prize.</p>
+<div class="code" id="resultCode" style="display:none;"></div>
+<br>
+<a class="btn" href="https://wa.me/212677346109" target="_blank" onclick="closeModal()">Claim on WhatsApp</a>
+<br><br>
+<a href="#" onclick="closeModal();return false;" style="color:#999;font-size:14px;">Close</a>
+</div>
+</div>
+
+<script>
+
+// Segments in clockwise order starting at top (0deg), 45deg each, matching the conic-gradient + labels above
+const prizes = [
+{ label:"Free Cookie", emoji:"🍪", text:"You won a FREE cookie of your choice!", code:"FREECOOKIE" },
+{ label:"10% Off", emoji:"🏷️", text:"You won 10% off your next order!", code:"SPIN10" },
+{ label:"Try Again", emoji:"😅", text:"So close! Come back and spin again next time.", code:null },
+{ label:"Free Delivery", emoji:"🚚", text:"You won FREE delivery on your next order!", code:"FREEDEL" },
+{ label:"20% Off", emoji:"🥳", text:"Jackpot! You won 20% off your next order!", code:"SPIN20" },
+{ label:"Surprise Gift", emoji:"🎁", text:"You won a surprise gift with your next order!", code:"SURPRISE" },
+{ label:"5% Off", emoji:"🙂", text:"You won 5% off your next order!", code:"SPIN5" },
+{ label:"Free Cookie", emoji:"🍪", text:"You won a FREE cookie of your choice!", code:"FREECOOKIE" }
+];
+
+let currentRotation = 0;
+let spinning = false;
+
+function spinWheel(){
+
+if(spinning) return;
+spinning = true;
+
+const btn = document.getElementById("spinBtn");
+btn.disabled = true;
+btn.textContent = "Spinning...";
+
+const wheel = document.getElementById("wheel");
+
+const winningIndex = Math.floor(Math.random() * prizes.length);
+const segmentAngle = 360 / prizes.length;
+const segmentCenter = winningIndex * segmentAngle + segmentAngle / 2;
+
+// extra full spins for effect
+const extraTurns = 6 + Math.floor(Math.random() * 3);
+
+// rotate so the winning segment center lands under the top pointer (0deg)
+const targetOffset = (360 - segmentCenter) % 360;
+currentRotation += extraTurns * 360 + ((targetOffset - (currentRotation % 360)) + 360) % 360;
+
+wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+setTimeout(() => {
+showResult(prizes[winningIndex]);
+btn.disabled = false;
+btn.textContent = "Spin the Wheel";
+spinning = false;
+}, 4600);
+
+}
+
+function showResult(prize){
+
+document.getElementById("resultEmoji").textContent = prize.emoji;
+document.getElementById("resultTitle").textContent = prize.label === "Try Again" ? "So Close!" : "You Won!";
+document.getElementById("resultText").textContent = prize.text;
+
+const codeEl = document.getElementById("resultCode");
+if(prize.code){
+codeEl.style.display = "inline-block";
+codeEl.textContent = prize.code;
+} else {
+codeEl.style.display = "none";
+}
+
+document.getElementById("modalOverlay").classList.add("show");
+
+}
+
+function closeModal(){
+document.getElementById("modalOverlay").classList.remove("show");
+}
+
+</script>
 
 </body>
 </html>
