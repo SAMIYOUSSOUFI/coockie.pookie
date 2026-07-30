@@ -531,7 +531,7 @@ Our goal is simple: make every bite unforgettable.
 <div class="wheel-label" style="transform:rotate(157.5deg) translateX(60px);">🚚 Free Delivery</div>
 <div class="wheel-label" style="transform:rotate(202.5deg) translateX(60px);">20% Off</div>
 <div class="wheel-label" style="transform:rotate(247.5deg) translateX(60px);">🎁 Surprise Gift</div>
-<div class="wheel-label" style="transform:rotate(292.5deg) translateX(60px);">5% Off</div>
+<div class="wheel-label" style="transform:rotate(292.5deg) translateX(60px);">50% Off</div>
 <div class="wheel-label" style="transform:rotate(337.5deg) translateX(60px);">🍪 Free Cookie</div>
 </div>
 <div class="hub">🍪</div>
@@ -588,14 +588,14 @@ Instagram
 
 // Segments in clockwise order starting at top (0deg), 45deg each, matching the conic-gradient + labels above
 const prizes = [
-{ label:"Free Cookie", emoji:"🍪", text:"Buy one cookie and get one FREE! Show this to claim it.", code:"FREECOOKIE" },
-{ label:"10% Off", emoji:"🏷️", text:"You get 10% off! Just tell us this code when you order.", code:"SPIN10" },
-{ label:"Try Again", emoji:"😅", text:"So close! No prize this time — go ahead and spin again.", code:null },
+{ label:"Free Cookie", emoji:"🍪", text:"It's your lucky day! You won a free cookie — buy one, get one free!", code:"FREECOOKIE" },
+{ label:"10% Off", emoji:"🏷️", text:"Congrats! You won 10% off! Just tell us this code when you order.", code:"SPIN10" },
+{ label:"Try Again", emoji:"😅", text:"Try again! No prize this time — come back next week for another spin.", code:null },
 { label:"Free Delivery", emoji:"🚚", text:"You get FREE delivery on your next order! Mention this code when you order.", code:"FREEDEL" },
-{ label:"20% Off", emoji:"🥳", text:"Jackpot! You get 20% off! Just tell us this code when you order.", code:"SPIN20" },
+{ label:"20% Off", emoji:"🥳", text:"Congrats! You won 20% off! Just tell us this code when you order.", code:"SPIN20" },
 { label:"Surprise Gift", emoji:"🎁", text:"Order your cookie now to get your surprise gift! Mention this code.", code:"SURPRISE" },
-{ label:"5% Off", emoji:"🙂", text:"You get 5% off! Just tell us this code when you order.", code:"SPIN5" },
-{ label:"Free Cookie", emoji:"🍪", text:"Buy one cookie and get one FREE! Show this to claim it.", code:"FREECOOKIE" }
+{ label:"50% Off", emoji:"🤩", text:"Congrats! You won 50% off! Just tell us this code when you order.", code:"SPIN50" },
+{ label:"Free Cookie", emoji:"🍪", text:"It's your lucky day! You won a free cookie — buy one, get one free!", code:"FREECOOKIE" }
 ];
 
 let currentRotation = 0;
@@ -679,7 +679,7 @@ spinning = false;
 function showResult(prize){
 
 document.getElementById("resultEmoji").textContent = prize.emoji;
-document.getElementById("resultTitle").textContent = prize.label === "Try Again" ? "So Close!" : "You Won!";
+document.getElementById("resultTitle").textContent = prize.label === "Try Again" ? "Try Again!" : "Congrats!";
 document.getElementById("resultText").textContent = prize.text;
 
 const codeEl = document.getElementById("resultCode");
