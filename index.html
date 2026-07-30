@@ -283,8 +283,7 @@ box-shadow:0 3px 10px rgba(0,0,0,.4);
 .spin-note{
 font-size:15px;
 color:#e9cdb4;
-margin-top:-15px;
-margin-bottom:10px;
+margin-top:15px;
 }
 
 /* ---- RESULT MODAL ---- */
@@ -519,7 +518,7 @@ Our goal is simple: make every bite unforgettable.
 
 <section class="spin-section">
 
-<h2 class="title">🎡 Spin & Win</h2>
+<h2 class="title">🎡 Pookie Spin</h2>
 <p class="subtitle">One free spin per visit — good luck!</p>
 
 <div class="wheel-wrap">
@@ -537,7 +536,8 @@ Our goal is simple: make every bite unforgettable.
 <div class="hub">🍪</div>
 </div>
 
-<button class="btn" id="spinBtn" onclick="spinWheel()">Spin the Wheel</button>
+<button class="btn" id="spinBtn" onclick="spinWheel()">🍪 Pookie Spin</button>
+<p class="spin-note" id="spinStatus"></p>
 
 </section>
 
@@ -577,7 +577,7 @@ Instagram
 <p id="resultText">Here's your prize.</p>
 <div class="code" id="resultCode" style="display:none;"></div>
 <br>
-<a class="btn" href="https://wa.me/212677346109" target="_blank" onclick="closeModal()">Claim on WhatsApp</a>
+<a class="btn" id="resultAction" href="https://wa.me/212677346109" target="_blank" onclick="closeModal()">Claim on WhatsApp</a>
 <br><br>
 <a href="#" onclick="closeModal();return false;" style="color:#999;font-size:14px;">Close</a>
 </div>
@@ -587,23 +587,66 @@ Instagram
 
 // Segments in clockwise order starting at top (0deg), 45deg each, matching the conic-gradient + labels above
 const prizes = [
-{ label:"Free Cookie", emoji:"🍪", text:"You won a FREE cookie of your choice!", code:"FREECOOKIE" },
-{ label:"10% Off", emoji:"🏷️", text:"You won 10% off your next order!", code:"SPIN10" },
-{ label:"Try Again", emoji:"😅", text:"So close! Come back and spin again next time.", code:null },
-{ label:"Free Delivery", emoji:"🚚", text:"You won FREE delivery on your next order!", code:"FREEDEL" },
-{ label:"20% Off", emoji:"🥳", text:"Jackpot! You won 20% off your next order!", code:"SPIN20" },
-{ label:"Surprise Gift", emoji:"🎁", text:"You won a surprise gift with your next order!", code:"SURPRISE" },
-{ label:"5% Off", emoji:"🙂", text:"You won 5% off your next order!", code:"SPIN5" },
-{ label:"Free Cookie", emoji:"🍪", text:"You won a FREE cookie of your choice!", code:"FREECOOKIE" }
+{ label:"Free Cookie", emoji:"🍪", text:"Buy one cookie and get one FREE! Show this to claim it.", code:"FREECOOKIE" },
+{ label:"10% Off", emoji:"🏷️", text:"You get 10% off! Just tell us this code when you order.", code:"SPIN10" },
+{ label:"Try Again", emoji:"😅", text:"So close! No prize this time — go ahead and spin again.", code:null },
+{ label:"Free Delivery", emoji:"🚚", text:"You get FREE delivery on your next order! Mention this code when you order.", code:"FREEDEL" },
+{ label:"20% Off", emoji:"🥳", text:"Jackpot! You get 20% off! Just tell us this code when you order.", code:"SPIN20" },
+{ label:"Surprise Gift", emoji:"🎁", text:"Order your cookie now to get your surprise gift! Mention this code.", code:"SURPRISE" },
+{ label:"5% Off", emoji:"🙂", text:"You get 5% off! Just tell us this code when you order.", code:"SPIN5" },
+{ label:"Free Cookie", emoji:"🍪", text:"Buy one cookie and get one FREE! Show this to claim it.", code:"FREECOOKIE" }
 ];
 
 let currentRotation = 0;
 let spinning = false;
 
+const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+const STORAGE_KEY = "pookieSpinLastPlayed";
+
+function getRemainingMs(){
+try{
+const last = localStorage.getItem(STORAGE_KEY);
+if(!last) return 0;
+const elapsed = Date.now() - parseInt(last, 10);
+return Math.max(0, ONE_WEEK_MS - elapsed);
+} catch(e){
+return 0;
+}
+}
+
+function formatRemaining(ms){
+const days = Math.floor(ms / (24 * 60 * 60 * 1000));
+const hours = Math.floor((ms % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+if(days > 0) return `Come back in ${days} day${days > 1 ? "s" : ""} for your next free spin!`;
+if(hours > 0) return `Come back in ${hours} hour${hours > 1 ? "s" : ""} for your next free spin!`;
+return "Come back soon for your next free spin!";
+}
+
+function refreshSpinAvailability(){
+const btn = document.getElementById("spinBtn");
+const status = document.getElementById("spinStatus");
+const remaining = getRemainingMs();
+
+if(remaining > 0){
+btn.disabled = true;
+btn.textContent = "Already Spun";
+status.textContent = formatRemaining(remaining);
+return false;
+} else {
+btn.disabled = false;
+btn.textContent = "🍪 Pookie Spin";
+status.textContent = "One free spin per week — good luck!";
+return true;
+}
+}
+
 function spinWheel(){
 
 if(spinning) return;
+if(!refreshSpinAvailability()) return;
 spinning = true;
+
+try{ localStorage.setItem(STORAGE_KEY, Date.now().toString()); } catch(e){}
 
 const btn = document.getElementById("spinBtn");
 btn.disabled = true;
@@ -626,8 +669,7 @@ wheel.style.transform = `rotate(${currentRotation}deg)`;
 
 setTimeout(() => {
 showResult(prizes[winningIndex]);
-btn.disabled = false;
-btn.textContent = "Spin the Wheel";
+refreshSpinAvailability();
 spinning = false;
 }, 4600);
 
@@ -640,11 +682,23 @@ document.getElementById("resultTitle").textContent = prize.label === "Try Again"
 document.getElementById("resultText").textContent = prize.text;
 
 const codeEl = document.getElementById("resultCode");
+const actionEl = document.getElementById("resultAction");
+
 if(prize.code){
 codeEl.style.display = "inline-block";
 codeEl.textContent = prize.code;
+actionEl.style.display = "inline-block";
+actionEl.textContent = "Claim on WhatsApp";
+actionEl.href = "https://wa.me/212677346109";
+actionEl.target = "_blank";
+actionEl.setAttribute("onclick", "closeModal()");
 } else {
 codeEl.style.display = "none";
+actionEl.style.display = "inline-block";
+actionEl.textContent = "See You Next Week";
+actionEl.removeAttribute("target");
+actionEl.href = "#";
+actionEl.setAttribute("onclick", "closeModal();return false;");
 }
 
 document.getElementById("modalOverlay").classList.add("show");
@@ -654,6 +708,8 @@ document.getElementById("modalOverlay").classList.add("show");
 function closeModal(){
 document.getElementById("modalOverlay").classList.remove("show");
 }
+
+refreshSpinAvailability();
 
 </script>
 
