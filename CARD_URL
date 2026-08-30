@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#3B2A20">
+<title>Cookie Pookie | Digital Card</title>
+<meta name="description" content="Fresh cookies, made to make you smile. Order on WhatsApp, follow us, or save our contact.">
+
+<!-- Open Graph: how this page looks when shared as a link -->
+<meta property="og:title" content="Cookie Pookie 🍪">
+<meta property="og:description" content="Fresh cookies. Made to make you smile.">
+<!-- TODO: swap for your real hosted logo/cover image URL once the site is live -->
+<meta property="og:image" content="logo.png">
+<!-- TODO: swap for your real hosted URL once the site is live -->
+<meta property="og:url" content="https://YOUR-DOMAIN.com/card">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%AA%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:#FBF1E4;
+    --paper:#FFFCF7;
+    --cocoa:#3B2A20;
+    --cocoa-soft:#5C4536;
+    --rose:#8B6152;
+    --raspberry:#E4577B;
+    --raspberry-deep:#C93F60;
+    --butter:#F2B33D;
+    --line:#EBD9C3;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}
+  }
+
+  body{
+    min-height:100vh;
+    font-family:'Nunito',sans-serif;
+    color:var(--cocoa);
+    display:flex;justify-content:center;align-items:center;
+    padding:32px 20px;
+    background:
+      radial-gradient(circle at 18% 14%, rgba(228,87,123,.10) 0, transparent 40%),
+      radial-gradient(circle at 82% 86%, rgba(242,179,61,.14) 0, transparent 42%),
+      var(--cream);
+    background-attachment:fixed;
+  }
+
+  .card{
+    width:min(400px,100%);
+    background:var(--paper);
+    border-radius:28px;
+    box-shadow:0 24px 60px rgba(59,42,32,.16), 0 2px 0 rgba(59,42,32,.03);
+    overflow:hidden;
+    opacity:0;
+    animation:riseIn .6s cubic-bezier(.2,.8,.2,1) .05s forwards;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(14px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* Signature: scalloped cookie-bag edge along the top of the card */
+  .scallop{
+    height:20px;
+    background:var(--cocoa);
+    -webkit-mask-image:radial-gradient(circle at 10px 0, transparent 10px, black 10.5px);
+    mask-image:radial-gradient(circle at 10px 0, transparent 10px, black 10.5px);
+    -webkit-mask-size:20px 20px;
+    mask-size:20px 20px;
+    -webkit-mask-repeat:repeat-x;
+    mask-repeat:repeat-x;
+  }
+
+  .content{padding:6px 26px 30px}
+
+  .logo-wrap{
+    width:96px;height:96px;margin:-38px auto 14px;
+    border-radius:50%;
+    background:var(--paper);
+    padding:5px;
+    box-shadow:0 10px 22px rgba(59,42,32,.18);
+  }
+  .logo{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;background:var(--butter)}
+
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:32px;
+    text-align:center;
+    letter-spacing:-.5px;
+  }
+  .brand .crumb{color:var(--raspberry)}
+
+  .tagline{
+    text-align:center;
+    font-style:italic;
+    color:var(--rose);
+    font-size:14.5px;
+    margin:6px 0 26px;
+  }
+
+  .buttons{display:grid;gap:11px}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    width:100%;padding:14px;border-radius:16px;
+    text-decoration:none;font-family:'Nunito',sans-serif;
+    font-weight:800;font-size:14.5px;
+    border:0;cursor:pointer;
+    transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0)}
+  .btn:focus-visible{outline:3px solid var(--butter);outline-offset:2px}
+
+  .primary{
+    background:var(--raspberry);color:#fff;
+    box-shadow:0 8px 18px rgba(228,87,123,.35);
+  }
+  .primary:hover{background:var(--raspberry-deep);box-shadow:0 10px 22px rgba(201,63,96,.4)}
+
+  .light{background:var(--cream);color:var(--cocoa-soft)}
+  .light:hover{background:#F5E6D3}
+
+  .dark{background:var(--cocoa);color:#fff}
+  .dark:hover{background:#2C1F17}
+
+  .icon{font-size:18px;line-height:1}
+
+  .divider{
+    height:1px;background:var(--line);margin:26px 0 22px;
+  }
+
+  .share-title{
+    font-family:'Fraunces',serif;
+    font-weight:600;font-size:17px;text-align:center;margin-bottom:4px;
+  }
+  .share-help{
+    text-align:center;font-size:12.5px;color:var(--rose);margin-bottom:18px;
+  }
+
+  .seal{
+    width:158px;height:158px;margin:0 auto;
+    border-radius:50%;
+    background:var(--paper);
+    border:3px dashed #E3C9AE;
+    display:flex;align-items:center;justify-content:center;
+    padding:10px;
+  }
+  #qrPreview{width:120px;height:120px;border-radius:10px;display:block}
+
+  .copy-link{
+    display:block;margin:16px auto 0;
+    background:none;border:none;cursor:pointer;
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:12.5px;
+    color:var(--raspberry-deep);
+    text-decoration:underline;text-underline-offset:3px;
+  }
+  .copy-link:hover{color:var(--raspberry)}
+
+  .footer{
+    font-size:11px;color:#B79C88;text-align:center;margin-top:24px;
+  }
+
+  .toast{
+    position:fixed;bottom:26px;left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--cocoa);color:#fff;
+    padding:12px 20px;border-radius:30px;
+    font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;
+    opacity:0;pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+    box-shadow:0 10px 24px rgba(0,0,0,.25);
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<main class="card">
+  <div class="scallop"></div>
+
+  <div class="content">
+    <!-- TODO: replace logo.png with your real Cookie Pookie logo -->
+    <div class="logo-wrap">
+      <img class="logo" src="logo.png" alt="Cookie Pookie logo">
+    </div>
+
+    <h1 class="brand">Cookie Pookie<span class="crumb">.</span></h1>
+    <p class="tagline">Fresh cookies, made to make you smile 💗</p>
+
+    <div class="buttons">
+      <a class="btn primary" href="https://wa.me/212677346109" target="_blank" rel="noopener">
+        <span class="icon">💬</span> Order on WhatsApp
+      </a>
+
+      <a class="btn light" href="https://instagram.com/cookie_pookie.01" target="_blank" rel="noopener">
+        <span class="icon">📸</span> Follow on Instagram
+      </a>
+
+      <a class="btn light" href="tel:+212677346109">
+        <span class="icon">📞</span> Call Us
+      </a>
+
+      <!-- TODO: point this at your real website once it's live -->
+      <a class="btn light" href="#" id="websiteBtn">
+        <span class="icon">🌐</span> Visit Our Website
+      </a>
+
+      <button class="btn dark" id="saveContact" type="button">
+        <span class="icon">➕</span> Save Contact
+      </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="share-title">Share Cookie Pookie</div>
+    <p class="share-help">Scan to open this card on any phone</p>
+
+    <div class="seal">
+      <img id="qrPreview" alt="QR code linking to this card">
+    </div>
+
+    <button class="copy-link" id="copyLink" type="button">Copy card link</button>
+
+    <p class="footer">© <span id="year"></span> Cookie Pookie · Made with 🍪</p>
+  </div>
+</main>
+
+<div class="toast" id="toast">Contact downloaded 💗</div>
+
+<script>
+  // TODO: after hosting this page, replace both with your real live URL.
+  const CARD_URL = "https://YOUR-DOMAIN.com/card";
+  const WEBSITE_URL = "https://YOUR-DOMAIN.com";
+
+  document.getElementById("websiteBtn").href = WEBSITE_URL;
+
+  document.getElementById("qrPreview").src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=0&color=3B2A20&data=" +
+    encodeURIComponent(CARD_URL);
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function showToast(message){
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2200);
+  }
+
+  document.getElementById("saveContact").addEventListener("click", () => {
+    const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Cookie Pookie
+ORG:Cookie Pookie
+TEL;TYPE=CELL:+212677346109
+URL:https://instagram.com/cookie_pookie.01
+NOTE:Fresh cookies
+END:VCARD`;
+
+    const blob = new Blob([vcard], {type:"text/vcard"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Cookie-Pookie.vcf";
+    a.click();
+    URL.revokeObjectURL(url);
+
+    showToast("Contact downloaded 💗");
+  });
+
+  document.getElementById("copyLink").addEventListener("click", async () => {
+    try{
+      await navigator.clipboard.writeText(CARD_URL);
+      showToast("Link copied!");
+    }catch(e){
+      showToast("Couldn't copy — long-press the link instead");
+    }
+  });
+</script>
+
+</body>
+</html>
