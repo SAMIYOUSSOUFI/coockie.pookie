@@ -309,86 +309,6 @@ transition:.3s;
 transform:translateY(-5px);
 }
 
-.spin-section{
-background:#3b2418;
-color:white;
-text-align:center;
-}
-
-.spin-section .title{
-color:white;
-}
-
-.spin-section .subtitle{
-color:#e9cdb4;
-}
-
-.wheel-wrap{
-position:relative;
-width:340px;
-height:340px;
-margin:20px auto 40px;
-}
-
-.pointer{
-position:absolute;
-top:-8px;
-left:50%;
-transform:translateX(-50%);
-width:0;
-height:0;
-border-left:18px solid transparent;
-border-right:18px solid transparent;
-border-top:32px solid #ffce54;
-z-index:5;
-}
-
-.wheel{
-width:100%;
-height:100%;
-border-radius:50%;
-position:relative;
-border:8px solid #ffce54;
-box-shadow:0 0 0 6px #3b2418,0 10px 40px rgba(0,0,0,.5);
-background:conic-gradient(#d58b36 0deg 45deg,#f2a94d 45deg 90deg,#7a4a2b 90deg 135deg,#e2b25c 135deg 180deg,#d58b36 180deg 225deg,#f2a94d 225deg 270deg,#7a4a2b 270deg 315deg,#e2b25c 315deg 360deg);
-transition:transform 4.5s cubic-bezier(.17,.67,.14,1);
-}
-
-.wheel-label{
-position:absolute;
-top:50%;
-left:50%;
-width:150px;
-text-align:center;
-font-size:14px;
-font-weight:700;
-color:white;
-text-shadow:0 1px 3px rgba(0,0,0,.5);
-transform-origin:left center;
-}
-
-.hub{
-position:absolute;
-top:50%;
-left:50%;
-width:56px;
-height:56px;
-background:#ffce54;
-border-radius:50%;
-transform:translate(-50%,-50%);
-z-index:4;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:26px;
-}
-
-.spin-note{
-font-size:15px;
-color:#e9cdb4;
-margin-top:15px;
-}
-
 .modal-overlay{
 display:none;
 position:fixed;
@@ -531,8 +451,6 @@ section{padding:60px 6%;}
 .promo span{display:block;width:fit-content;margin:10px auto 0;}
 .buttons{flex-direction:column;align-items:center;}
 .buttons a{width:100%;max-width:260px;text-align:center;}
-.wheel-wrap{width:280px;height:280px;}
-.wheel-label{width:120px;font-size:12px;}
 }
 
 </style>
@@ -587,10 +505,9 @@ section{padding:60px 6%;}
 <div class="price"><span>22 DH</span></div>
 </div>
 
-<!-- TODO: replace with a real photo of the Framboise cookie -->
 <div class="card clickable" onclick="openFramboiseModal()">
 <span class="tag">New</span>
-<img src="images/img_4705_web.webp" alt="Cookie Pookie Framboise Cookie">
+<img src="images/framboise-crosssection.jpg" alt="Cookie Pookie Framboise Cookie cross-section">
 <h3>Framboise</h3>
 <p>Raspberry sauce inside — pick your topping: Oreo or Milka.</p>
 <div class="price"><span>22 DH</span></div>
@@ -651,31 +568,6 @@ section{padding:60px 6%;}
 
 </section>
 
-<section class="spin-section">
-
-<h2 class="title">🎡 Pookie Spin</h2>
-<p class="subtitle">One free spin per week — good luck!</p>
-
-<div class="wheel-wrap">
-<div class="pointer"></div>
-<div class="wheel" id="wheel">
-<div class="wheel-label" style="transform:rotate(22.5deg) translateX(60px);">🍪 Free Cookie</div>
-<div class="wheel-label" style="transform:rotate(67.5deg) translateX(60px);">10% Off</div>
-<div class="wheel-label" style="transform:rotate(112.5deg) translateX(60px);">😅 Try Again</div>
-<div class="wheel-label" style="transform:rotate(157.5deg) translateX(60px);">🚚 Free Delivery</div>
-<div class="wheel-label" style="transform:rotate(202.5deg) translateX(60px);">20% Off</div>
-<div class="wheel-label" style="transform:rotate(247.5deg) translateX(60px);">🎁 Surprise Gift</div>
-<div class="wheel-label" style="transform:rotate(292.5deg) translateX(60px);">50% Off</div>
-<div class="wheel-label" style="transform:rotate(337.5deg) translateX(60px);">🍪 Free Cookie</div>
-</div>
-<div class="hub">🍪</div>
-</div>
-
-<button class="btn" id="spinBtn" onclick="spinWheel()">🍪 Pookie Spin</button>
-<p class="spin-note" id="spinStatus"></p>
-
-</section>
-
 <section class="contact">
 
 <h2>Order Now 🍪</h2>
@@ -692,19 +584,6 @@ section{padding:60px 6%;}
 <footer>
 © 2026 Cookie Pookie • Freshly Baked With Love 🤎
 </footer>
-
-<div class="modal-overlay" id="modalOverlay">
-<div class="modal-box">
-<div class="emoji" id="resultEmoji">🎉</div>
-<h3 id="resultTitle">You Won!</h3>
-<p id="resultText">Here's your prize.</p>
-<div class="code" id="resultCode" style="display:none;"></div>
-<br>
-<a class="btn" id="resultAction" href="https://wa.me/212677346109" target="_blank">Claim on WhatsApp</a>
-<br><br>
-<a href="#" onclick="closeModal();return false;" style="color:#999;font-size:14px;">Close</a>
-</div>
-</div>
 
 <div class="modal-overlay" id="kinderModalOverlay">
 <div class="modal-box">
@@ -800,111 +679,6 @@ const url = "https://wa.me/212677346109?text=" + encodeURIComponent(message);
 window.open(url, "_blank");
 closeKinderModal();
 }
-
-
-const prizes = [
-{label:"Free Cookie",emoji:"🍪",text:"It's your lucky day! You won a free cookie!",code:"FREECOOKIE"},
-{label:"10% Off",emoji:"🏷️",text:"Congrats! You won 10% off your order!",code:"SPIN10"},
-{label:"Try Again",emoji:"😅",text:"Try again next week!",code:null},
-{label:"Free Delivery",emoji:"🚚",text:"You won FREE delivery on your next order!",code:"FREEDEL"},
-{label:"20% Off",emoji:"🥳",text:"Congrats! You won 20% off!",code:"SPIN20"},
-{label:"Surprise Gift",emoji:"🎁",text:"You won a surprise gift!",code:"SURPRISE"},
-{label:"50% Off",emoji:"🤩",text:"Wow! You won 50% off!",code:"SPIN50"},
-{label:"Free Cookie",emoji:"🍪",text:"You won a free cookie!",code:"FREECOOKIE"}
-];
-
-let currentRotation = 0;
-let spinning = false;
-const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
-const STORAGE_KEY = "pookieSpinLastPlayed";
-
-function getRemainingMs(){
-try{
-const last = localStorage.getItem(STORAGE_KEY);
-if(!last){return 0;}
-const elapsed = Date.now() - parseInt(last,10);
-return Math.max(0, ONE_WEEK_MS - elapsed);
-}
-catch(e){return 0;}
-}
-
-function formatRemaining(ms){
-const days = Math.floor(ms / (24 * 60 * 60 * 1000));
-const hours = Math.floor((ms % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-if(days > 0){return `Come back in ${days} day${days > 1 ? "s" : ""} for your next free spin!`;}
-if(hours > 0){return `Come back in ${hours} hour${hours > 1 ? "s" : ""} for your next free spin!`;}
-return "Come back soon for your next free spin!";
-}
-
-function refreshSpinAvailability(){
-const btn = document.getElementById("spinBtn");
-const status = document.getElementById("spinStatus");
-const remaining = getRemainingMs();
-if(remaining > 0){
-btn.disabled = true;
-btn.textContent = "Already Spun";
-status.textContent = formatRemaining(remaining);
-return false;
-}
-btn.disabled = false;
-btn.textContent = "🍪 Pookie Spin";
-status.textContent = "One free spin per week — good luck!";
-return true;
-}
-
-function spinWheel(){
-if(spinning){return;}
-if(!refreshSpinAvailability()){return;}
-spinning = true;
-try{localStorage.setItem(STORAGE_KEY, Date.now().toString());}
-catch(e){}
-const btn = document.getElementById("spinBtn");
-btn.disabled = true;
-btn.textContent = "Spinning...";
-const wheel = document.getElementById("wheel");
-const winningIndex = Math.floor(Math.random() * prizes.length);
-const segmentAngle = 360 / prizes.length;
-const segmentCenter = winningIndex * segmentAngle + segmentAngle / 2;
-const extraTurns = 6 + Math.floor(Math.random() * 3);
-const targetOffset = (360 - segmentCenter) % 360;
-currentRotation += extraTurns * 360 + ((targetOffset - (currentRotation % 360)) + 360) % 360;
-wheel.style.transform = `rotate(${currentRotation}deg)`;
-setTimeout(() => {
-showResult(prizes[winningIndex]);
-refreshSpinAvailability();
-spinning = false;
-}, 4600);
-}
-
-function showResult(prize){
-document.getElementById("resultEmoji").textContent = prize.emoji;
-document.getElementById("resultTitle").textContent = prize.label === "Try Again" ? "Try Again!" : "Congrats!";
-document.getElementById("resultText").textContent = prize.text;
-const codeEl = document.getElementById("resultCode");
-const actionEl = document.getElementById("resultAction");
-if(prize.code){
-codeEl.style.display = "inline-block";
-codeEl.textContent = prize.code;
-actionEl.style.display = "inline-block";
-actionEl.textContent = "Claim on WhatsApp";
-actionEl.href = "https://wa.me/212677346109";
-actionEl.target = "_blank";
-}
-else{
-codeEl.style.display = "none";
-actionEl.textContent = "See You Next Week";
-actionEl.removeAttribute("target");
-actionEl.href = "#";
-actionEl.onclick = closeModal;
-}
-document.getElementById("modalOverlay").classList.add("show");
-}
-
-function closeModal(){
-document.getElementById("modalOverlay").classList.remove("show");
-}
-
-refreshSpinAvailability();
 
 </script>
 
