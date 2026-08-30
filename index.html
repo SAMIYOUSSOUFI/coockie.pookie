@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 
@@ -34,7 +33,6 @@ body{
 
 header{
     height:100vh;
-    min-height:600px;
     position:relative;
     overflow:hidden;
     display:flex;
@@ -49,12 +47,12 @@ header{
 header::before{
     content:"";
     position:absolute;
-    inset:-10%;
-    background-image:url("images/desginck2.jpg");
+    inset:-8%;
+    background-image:url("images/img_4286_web.webp");
     background-size:cover;
     background-position:center;
     z-index:-2;
-    animation:heroZoom 16s ease-in-out infinite alternate;
+    animation:heroZoom 18s ease-in-out infinite alternate;
 }
 
 header::after{
@@ -62,14 +60,13 @@ header::after{
     position:absolute;
     inset:0;
     background:linear-gradient(
-        rgba(0,0,0,.42),
-        rgba(0,0,0,.58)
+        rgba(0,0,0,.48),
+        rgba(0,0,0,.48)
     );
     z-index:-1;
 }
 
 @keyframes heroZoom{
-
     0%{
         transform:scale(1);
     }
@@ -77,7 +74,6 @@ header::after{
     100%{
         transform:scale(1.12);
     }
-
 }
 
 .hero{
@@ -86,7 +82,6 @@ header::after{
 }
 
 @keyframes heroFade{
-
     from{
         opacity:0;
         transform:translateY(30px);
@@ -96,17 +91,16 @@ header::after{
         opacity:1;
         transform:translateY(0);
     }
-
 }
 
 .hero h1{
     font-size:70px;
     font-weight:700;
-    text-shadow:0 5px 25px rgba(0,0,0,.45);
+    text-shadow:0 4px 20px rgba(0,0,0,.4);
 }
 
 .hero p{
-    margin:20px 0 30px;
+    margin:20px 0;
     font-size:22px;
 }
 
@@ -130,8 +124,14 @@ header::after{
     box-shadow:0 8px 20px rgba(0,0,0,.2);
 }
 
+.btn:disabled{
+    background:#c9a377;
+    cursor:not-allowed;
+    transform:none;
+}
+
 /* =========================
-   GENERAL
+   GENERAL SECTIONS
 ========================= */
 
 section{
@@ -157,12 +157,12 @@ section{
 
 .promo{
     background:
-        linear-gradient(
-            90deg,
-            rgba(213,139,54,.90),
-            rgba(242,169,77,.90)
-        ),
-        url("images/desginck2.jpg");
+    linear-gradient(
+        90deg,
+        rgba(213,139,54,.88),
+        rgba(242,169,77,.88)
+    ),
+    url("images/desginck2.jpg");
 
     background-size:cover;
     background-position:center;
@@ -198,7 +198,7 @@ section{
     background:white;
     border-radius:20px;
     overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,.10);
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
     transition:.3s;
 }
 
@@ -220,15 +220,14 @@ section{
 }
 
 .card h3{
-    padding:18px 15px 0;
-    font-size:21px;
+    padding:15px 15px 0;
+    font-size:20px;
 }
 
 .card p{
-    padding:6px 15px 10px;
+    padding:5px 15px 10px;
     color:#666;
     font-size:14px;
-    min-height:48px;
 }
 
 .price{
@@ -257,8 +256,16 @@ section{
     z-index:2;
 }
 
+.card.clickable{
+    cursor:pointer;
+}
+
+.card.clickable:hover{
+    box-shadow:0 15px 35px rgba(213,139,54,.3);
+}
+
 /* =========================
-   KINDER OPTIONS
+   TOPPING OPTIONS
 ========================= */
 
 .kinder-options{
@@ -317,7 +324,7 @@ section{
     height:350px;
     overflow:hidden;
     border-radius:22px;
-    box-shadow:0 8px 25px rgba(0,0,0,.10);
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
     background:#eee;
 }
 
@@ -391,7 +398,7 @@ section{
 }
 
 /* =========================
-   MODAL
+   MODALS
 ========================= */
 
 .modal-overlay{
@@ -413,7 +420,7 @@ section{
     background:white;
     color:#3b2418;
     border-radius:24px;
-    max-width:390px;
+    max-width:380px;
     width:100%;
     padding:40px 30px;
     text-align:center;
@@ -421,7 +428,6 @@ section{
 }
 
 @keyframes pop{
-
     from{
         transform:scale(.7);
         opacity:0;
@@ -431,7 +437,6 @@ section{
         transform:scale(1);
         opacity:1;
     }
-
 }
 
 .modal-box .emoji{
@@ -528,7 +533,6 @@ footer{
     .gallery-item:first-child{
         grid-column:span 2;
     }
-
 }
 
 @media(max-width:768px){
@@ -579,14 +583,9 @@ footer{
         grid-column:span 1;
         height:350px;
     }
-
 }
 
 @media(max-width:480px){
-
-    header{
-        min-height:550px;
-    }
 
     .hero h1{
         font-size:32px;
@@ -625,7 +624,6 @@ footer{
     .kinder-options{
         grid-template-columns:repeat(2,1fr);
     }
-
 }
 
 </style>
@@ -634,386 +632,596 @@ footer{
 
 <body>
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <header>
 
-```
-<div class="hero">
+    <div class="hero">
 
-    <h1>🍪 Cookie Pookie</h1>
+        <h1>🍪 Cookie Pookie</h1>
 
-    <p>
-        Freshly baked cookies • Crispy outside • Gooey inside 🤎
-    </p>
+        <p>
+            Freshly baked cookies • Crispy outside • Gooey inside 🤎
+        </p>
 
-    <a href="#menu" class="btn">
-        Explore Menu
-    </a>
+        <a href="#menu" class="btn">
+            Explore Menu
+        </a>
 
-</div>
-```
+    </div>
 
 </header>
 
-<!-- PROMO -->
+
+<!-- =========================
+     PROMO
+========================= -->
 
 <div class="promo">
 
-```
-🎉 Buy 3 Cookies, Get 1 FREE!
+    🎉 Buy 3 Cookies, Get 1 FREE!
 
-<span>
-    Mix &amp; match any flavor
-</span>
-```
+    <span>
+        Mix &amp; match any flavor
+    </span>
 
 </div>
 
-<!-- MENU -->
+
+<!-- =========================
+     MENU
+========================= -->
 
 <section id="menu">
 
-```
-<h2 class="title">
-    Our Menu
-</h2>
+    <h2 class="title">
+        Our Menu
+    </h2>
 
-<p class="subtitle">
-    Handmade daily • Fresh cookies made with love
-</p>
-
-
-<div class="products">
+    <p class="subtitle">
+        Handmade daily • Fresh cookies made with love
+    </p>
 
 
-    <!-- KINDER BUENO -->
+    <div class="products">
 
-    <div
-        class="card"
-        onclick="orderCookie('Kinder Bueno')"
-        style="cursor:pointer;"
-    >
 
-        <span class="tag">
-            New
-        </span>
+        <!-- NATURE -->
 
-        <img
-            src="images/kinder.kinder.jpeg"
-            alt="Kinder Bueno Cookie"
-        >
+        <div class="card">
 
-        <h3>
-            Kinder Bueno
-        </h3>
+            <img
+                src="images/img_4286_web.webp"
+                alt="Cookie Pookie Nature Cookie"
+            >
 
-        <p>
-            Gooey Kinder sauce with a delicious Bueno topping.
-        </p>
+            <h3>
+                Nature
+            </h3>
 
-        <div class="price">
-            <span>22 DH</span>
+            <p>
+                Our classic plain cookie, simple and delicious.
+            </p>
+
+            <div class="price">
+                <span>14 DH</span>
+            </div>
+
         </div>
 
-    </div>
 
+        <!-- PISTACHE WHITE -->
 
-    <!-- KITKAT -->
+        <div class="card">
 
-    <div
-        class="card"
-        onclick="orderCookie('KitKat')"
-        style="cursor:pointer;"
-    >
+            <span class="tag">
+                Premium
+            </span>
 
-        <span class="tag">
-            New
-        </span>
+            <img
+                src="images/img_4266_web.webp"
+                alt="Cookie Pookie Pistache White Cookie"
+            >
 
-        <img
-            src="images/kinder.kitkat.jpeg"
-            alt="KitKat Cookie"
-        >
+            <h3>
+                Pistache White
+            </h3>
 
-        <h3>
-            Kinder KitKat
-        </h3>
+            <p>
+                Pistachio sauce with white chocolate and roasted pistachio.
+            </p>
 
-        <p>
-            Gooey Kinder sauce with a crunchy KitKat topping.
-        </p>
+            <div class="price">
+                <span>25 DH</span>
+            </div>
 
-        <div class="price">
-            <span>22 DH</span>
         </div>
 
-    </div>
 
+        <!-- KINDER -->
 
-    <!-- MILKA -->
-
-    <div
-        class="card"
-        onclick="orderCookie('Milka')"
-        style="cursor:pointer;"
-    >
-
-        <span class="tag">
-            New
-        </span>
-
-        <img
-            src="images/kinder.milka.jpeg"
-            alt="Milka Cookie"
+        <div
+            class="card clickable"
+            onclick="openKinderModal()"
         >
 
-        <h3>
-            Kinder Milka
-        </h3>
+            <span class="tag">
+                New
+            </span>
 
-        <p>
-            Gooey Kinder sauce with smooth Milka chocolate.
-        </p>
+            <img
+                src="images/kinder.kinder.jpeg"
+                alt="Cookie Pookie Kinder Cookie"
+            >
 
-        <div class="price">
-            <span>22 DH</span>
+            <h3>
+                Kinder Cookie
+            </h3>
+
+            <p>
+                Gooey Kinder sauce inside — pick your topping:
+                Bueno, KitKat or Milka.
+            </p>
+
+            <div class="price">
+                <span>22 DH</span>
+            </div>
+
         </div>
 
-    </div>
 
+        <!-- FRAMBOISE -->
 
-    <!-- MIX -->
-
-    <div
-        class="card"
-        onclick="orderCookie('Mixed Toppings')"
-        style="cursor:pointer;"
-    >
-
-        <span class="tag">
-            Special
-        </span>
-
-        <img
-            src="images/desginck2.jpg"
-            alt="Cookie Pookie Special Cookie"
+        <div
+            class="card clickable"
+            onclick="openFramboiseModal()"
         >
 
-        <h3>
-            Pookie Special
-        </h3>
+            <span class="tag">
+                New
+            </span>
 
-        <p>
-            A special Cookie Pookie creation made for true cookie lovers.
-        </p>
+            <img
+                src="images/framboise-crosssection.jpg"
+                alt="Cookie Pookie Framboise Cookie"
+            >
 
-        <div class="price">
-            <span>25 DH</span>
+            <h3>
+                Framboise
+            </h3>
+
+            <p>
+                Raspberry sauce inside — pick your topping:
+                Oreo or Milka.
+            </p>
+
+            <div class="price">
+                <span>22 DH</span>
+            </div>
+
         </div>
 
+
     </div>
-
-
-</div>
-```
 
 </section>
 
-<!-- GALLERY -->
+
+<!-- =========================
+     GALLERY
+========================= -->
 
 <section class="gallery-section">
 
-```
-<h2 class="title">
-    Our Cookies 🍪
-</h2>
+    <h2 class="title">
+        Our Cookies 🍪
+    </h2>
 
-<p class="subtitle">
-    Fresh from Cookie Pookie 🤎
-</p>
-
-
-<div class="gallery">
+    <p class="subtitle">
+        Real photos from Cookie Pookie 🤎
+    </p>
 
 
-    <div class="gallery-item">
+    <div class="gallery">
 
-        <img
-            src="images/desginck2.jpg"
-            alt="Cookie Pookie Cookies"
-        >
 
-        <div class="gallery-caption">
-            Freshly baked with love 🤎
+        <div class="gallery-item">
+
+            <img
+                src="images/img_4286_web.webp"
+                alt="Cookie Pookie Fresh Cookies"
+                loading="lazy"
+            >
+
+            <div class="gallery-caption">
+                Freshly baked with love 🤎
+            </div>
+
         </div>
 
-    </div>
 
+        <div class="gallery-item">
 
-    <div class="gallery-item">
+            <img
+                src="images/img_4266_web.webp"
+                alt="Cookie Pookie Pistachio"
+                loading="lazy"
+            >
 
-        <img
-            src="images/kinder.kinder.jpeg"
-            alt="Kinder Bueno Cookie"
-        >
+            <div class="gallery-caption">
+                Pistachio perfection 💚
+            </div>
 
-        <div class="gallery-caption">
-            Kinder goodness 🍫
         </div>
 
-    </div>
 
+        <div class="gallery-item">
 
-    <div class="gallery-item">
+            <img
+                src="images/img_4705_web.webp"
+                alt="Cookie Pookie Gooey Cookie"
+                loading="lazy"
+            >
 
-        <img
-            src="images/kinder.kitkat.jpeg"
-            alt="KitKat Cookie"
-        >
+            <div class="gallery-caption">
+                Look at that gooey center 🤤
+            </div>
 
-        <div class="gallery-caption">
-            Crunchy KitKat topping 🤎
         </div>
 
-    </div>
 
+        <div class="gallery-item">
 
-    <div class="gallery-item">
+            <img
+                src="images/img_4217_web.webp"
+                alt="Cookie Pookie Cookies"
+                loading="lazy"
+            >
 
-        <img
-            src="images/kinder.milka.jpeg"
-            alt="Milka Cookie"
-        >
+            <div class="gallery-caption">
+                Made for cookie lovers 🍪
+            </div>
 
-        <div class="gallery-caption">
-            Smooth Milka chocolate 🍫
         </div>
 
-    </div>
 
+        <div class="gallery-item">
 
-    <div class="gallery-item">
+            <img
+                src="images/img_4719_web.webp"
+                alt="Cookie Pookie"
+                loading="lazy"
+            >
 
-        <img
-            src="images/kinder.kinder.jpeg"
-            alt="Cookie Pookie Kinder"
-        >
+            <div class="gallery-caption">
+                Your next favorite cookie 🤎
+            </div>
 
-        <div class="gallery-caption">
-            Your next favorite cookie 🍪
         </div>
 
+
     </div>
-
-
-</div>
-```
 
 </section>
 
-<!-- ABOUT -->
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section class="about">
 
-```
-<h2 class="title">
-    Why Cookie Pookie?
-</h2>
+    <h2 class="title">
+        Why Cookie Pookie?
+    </h2>
 
-<p>
-    Every cookie is handmade with premium ingredients
-    and baked fresh every day. Our goal is simple:
-    make every bite unforgettable.
-</p>
+    <p>
+        Every cookie is handmade with premium ingredients
+        and baked fresh every day. Our goal is simple:
+        make every bite unforgettable.
+    </p>
 
 
-<div class="features">
+    <div class="features">
 
-    <div class="feature">
-        🍪 Fresh Every Day
+        <div class="feature">
+            🍪 Fresh Every Day
+        </div>
+
+        <div class="feature">
+            🍫 Premium Chocolate
+        </div>
+
+        <div class="feature">
+            ❤️ Homemade
+        </div>
+
+        <div class="feature">
+            🚚 Fast Delivery
+        </div>
+
+        <div class="feature">
+            🎁 Freshly Made
+        </div>
+
     </div>
-
-    <div class="feature">
-        🍫 Premium Chocolate
-    </div>
-
-    <div class="feature">
-        ❤️ Homemade
-    </div>
-
-    <div class="feature">
-        🚚 Fast Delivery
-    </div>
-
-    <div class="feature">
-        🎁 Freshly Made
-    </div>
-
-</div>
-```
 
 </section>
 
-<!-- CONTACT -->
+
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section class="contact">
 
-```
-<h2>
-    Order Now 🍪
-</h2>
+    <h2>
+        Order Now 🍪
+    </h2>
 
-<p>
-    Call us or message us on WhatsApp &amp; Instagram.
-</p>
+    <p>
+        Call us or message us on WhatsApp &amp; Instagram.
+    </p>
 
-<h3>
-    📞 +212 677 346 109
-</h3>
+    <h3>
+        📞 +212 677 346 109
+    </h3>
 
 
-<div class="buttons">
+    <div class="buttons">
 
-    <a
-        class="whatsapp"
-        href="https://wa.me/212677346109"
-        target="_blank"
-    >
-        WhatsApp
-    </a>
+        <a
+            class="whatsapp"
+            href="https://wa.me/212677346109"
+            target="_blank"
+        >
+            WhatsApp
+        </a>
 
-    <a
-        class="instagram"
-        href="https://www.instagram.com/cookie_pookie.01"
-        target="_blank"
-    >
-        Instagram
-    </a>
+        <a
+            class="instagram"
+            href="https://www.instagram.com/cookie_pookie.01"
+            target="_blank"
+        >
+            Instagram
+        </a>
 
-</div>
-```
+    </div>
 
 </section>
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-```
-© 2026 Cookie Pookie • Freshly Baked With Love 🤎
-```
+    © 2026 Cookie Pookie • Freshly Baked With Love 🤎
 
 </footer>
 
-<!-- JAVASCRIPT -->
+
+<!-- =========================
+     KINDER MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="kinderModalOverlay"
+>
+
+    <div class="modal-box">
+
+        <div class="emoji">
+            🍪
+        </div>
+
+        <h3>
+            Kinder Cookie
+        </h3>
+
+        <p>
+            Gooey Kinder sauce inside.
+            Choose your topping:
+        </p>
+
+
+        <div class="kinder-options">
+
+
+            <div
+                class="kinder-option"
+                onclick="chooseKinder('Kinder Bueno', 0)"
+            >
+
+                <img
+                    src="images/kinder.kinder.jpeg"
+                    alt="Kinder Bueno topping"
+                >
+
+                <span>
+                    Kinder Bueno
+                </span>
+
+            </div>
+
+
+            <div
+                class="kinder-option"
+                onclick="chooseKinder('KitKat', 0)"
+            >
+
+                <img
+                    src="images/kinder.kitkat.jpeg"
+                    alt="KitKat topping"
+                >
+
+                <span>
+                    KitKat
+                </span>
+
+            </div>
+
+
+            <div
+                class="kinder-option"
+                onclick="chooseKinder('Milka', 0)"
+            >
+
+                <img
+                    src="images/kinder.milka.jpeg"
+                    alt="Milka topping"
+                >
+
+                <span>
+                    Milka
+                </span>
+
+            </div>
+
+
+            <div
+                class="kinder-option"
+                onclick="chooseKinder('Oreo', 0)"
+            >
+
+                <img
+                    src="images/img_4217_web.webp"
+                    alt="Oreo topping"
+                >
+
+                <span>
+                    Oreo
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <a
+            href="#"
+            onclick="closeKinderModal();return false;"
+            style="color:#999;font-size:14px;"
+        >
+            Close
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FRAMBOISE MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="framboiseModalOverlay"
+>
+
+    <div class="modal-box">
+
+        <div class="emoji">
+            🍪
+        </div>
+
+        <h3>
+            Framboise Cookie
+        </h3>
+
+        <p>
+            Raspberry sauce inside.
+            Choose your topping:
+        </p>
+
+
+        <div class="kinder-options">
+
+
+            <div
+                class="kinder-option"
+                onclick="chooseFramboise('Oreo')"
+            >
+
+                <img
+                    src="images/img_4217_web.webp"
+                    alt="Oreo topping"
+                >
+
+                <span>
+                    Oreo
+                </span>
+
+            </div>
+
+
+            <div
+                class="kinder-option"
+                onclick="chooseFramboise('Milka')"
+            >
+
+                <img
+                    src="images/kinder.milka.jpeg"
+                    alt="Milka topping"
+                >
+
+                <span>
+                    Milka
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <a
+            href="#"
+            onclick="closeFramboiseModal();return false;"
+            style="color:#999;font-size:14px;"
+        >
+            Close
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
-function orderCookie(topping){
+function openFramboiseModal(){
+
+    document
+        .getElementById("framboiseModalOverlay")
+        .classList.add("show");
+
+}
+
+
+function closeFramboiseModal(){
+
+    document
+        .getElementById("framboiseModalOverlay")
+        .classList.remove("show");
+
+}
+
+
+function chooseFramboise(topping){
 
     const message =
-        `Salam! Bghit Cookie Pookie b ${topping} (22 DH) 🍪`;
+        `Salam! Bghit Framboise Cookie b ${topping} (22 DH) 🍪`;
 
     const url =
         "https://wa.me/212677346109?text="
@@ -1021,7 +1229,86 @@ function orderCookie(topping){
 
     window.open(url, "_blank");
 
+    closeFramboiseModal();
+
 }
+
+
+function openKinderModal(){
+
+    document
+        .getElementById("kinderModalOverlay")
+        .classList.add("show");
+
+}
+
+
+function closeKinderModal(){
+
+    document
+        .getElementById("kinderModalOverlay")
+        .classList.remove("show");
+
+}
+
+
+function chooseKinder(topping, extra){
+
+    const price = 22 + (extra || 0);
+
+    const message =
+        `Salam! Bghit Kinder Cookie b ${topping} (${price} DH) 🍪`;
+
+    const url =
+        "https://wa.me/212677346109?text="
+        + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+
+    closeKinderModal();
+
+}
+
+
+/* Close modal when clicking outside */
+
+document.addEventListener("click", function(event){
+
+    const kinderModal =
+        document.getElementById("kinderModalOverlay");
+
+    const framboiseModal =
+        document.getElementById("framboiseModalOverlay");
+
+
+    if(event.target === kinderModal){
+
+        closeKinderModal();
+
+    }
+
+
+    if(event.target === framboiseModal){
+
+        closeFramboiseModal();
+
+    }
+
+});
+
+
+/* ESC closes modal */
+
+document.addEventListener("keydown", function(event){
+
+    if(event.key === "Escape"){
+
+        closeKinderModal();
+        closeFramboiseModal();
+
+    }
+
+});
 
 </script>
 
