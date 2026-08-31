@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,9 +27,7 @@ body{
     overflow-x:hidden;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 header{
     height:100vh;
@@ -68,13 +65,8 @@ header::after{
 }
 
 @keyframes heroZoom{
-    0%{
-        transform:scale(1);
-    }
-
-    100%{
-        transform:scale(1.12);
-    }
+    0%{transform:scale(1);}
+    100%{transform:scale(1.12);}
 }
 
 .hero{
@@ -87,7 +79,6 @@ header::after{
         opacity:0;
         transform:translateY(30px);
     }
-
     to{
         opacity:1;
         transform:translateY(0);
@@ -105,9 +96,7 @@ header::after{
     font-size:22px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTONS */
 
 .btn{
     display:inline-block;
@@ -134,10 +123,9 @@ header::after{
     padding:10px 22px;
     background:#e99aa8;
     color:white;
-    text-decoration:none;
+    border:none;
     border-radius:30px;
     font-weight:600;
-    border:none;
     cursor:pointer;
     transition:.3s;
     font-size:14px;
@@ -146,12 +134,9 @@ header::after{
 .order-btn:hover{
     background:#d97989;
     transform:translateY(-2px);
-    box-shadow:0 6px 15px rgba(0,0,0,.15);
 }
 
-/* =========================
-   SECTIONS
-========================= */
+/* SECTIONS */
 
 section{
     padding:80px 10%;
@@ -170,9 +155,7 @@ section{
     margin-bottom:50px;
 }
 
-/* =========================
-   PROMO
-========================= */
+/* PROMO */
 
 .promo{
     background:
@@ -202,9 +185,7 @@ section{
     font-size:16px;
 }
 
-/* =========================
-   MENU
-========================= */
+/* MENU */
 
 .products{
     display:grid;
@@ -276,9 +257,7 @@ section{
     z-index:2;
 }
 
-/* =========================
-   TOPPING OPTIONS
-========================= */
+/* TOPPING OPTIONS */
 
 .kinder-options{
     display:grid;
@@ -328,9 +307,7 @@ section{
     color:#3b2418;
 }
 
-/* =========================
-   GALLERY
-========================= */
+/* GALLERY */
 
 .gallery-section{
     background:#fffafb;
@@ -383,9 +360,7 @@ section{
     );
 }
 
-/* =========================
-   ABOUT
-========================= */
+/* ABOUT */
 
 .about{
     background:#fff0f3;
@@ -421,9 +396,7 @@ section{
     transform:translateY(-5px);
 }
 
-/* =========================
-   MODALS
-========================= */
+/* MODALS */
 
 .modal-overlay{
     display:none;
@@ -458,7 +431,6 @@ section{
         transform:scale(.7);
         opacity:0;
     }
-
     to{
         transform:scale(1);
         opacity:1;
@@ -488,9 +460,7 @@ section{
     text-decoration:none;
 }
 
-/* =========================
-   CONTACT
-========================= */
+/* CONTACT */
 
 .contact{
     text-align:center;
@@ -527,8 +497,6 @@ section{
     font-weight:bold;
     text-decoration:none;
     transition:.3s;
-    cursor:pointer;
-    border:none;
 }
 
 .buttons a:hover{
@@ -543,9 +511,7 @@ section{
     background:#E1306C;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     background:#332125;
@@ -554,9 +520,7 @@ footer{
     padding:25px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 
 @media(max-width:900px){
 
@@ -649,7 +613,8 @@ footer{
         align-items:center;
     }
 
-    .buttons a{
+    .buttons a,
+    .buttons button{
         width:100%;
         max-width:260px;
         text-align:center;
@@ -667,736 +632,679 @@ footer{
 
 <body>
 
-
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <header>
 
-    <div class="hero">
+```
+<div class="hero">
 
-        <h1>🍪 Cookie Pookie</h1>
+    <h1>🍪 Cookie Pookie</h1>
 
-        <p>
-            Freshly baked cookies • Crispy outside • Gooey inside 🤎
-        </p>
+    <p>
+        Freshly baked cookies • Crispy outside • Gooey inside 🤎
+    </p>
 
-        <a href="#menu" class="btn">
-            Explore Menu
-        </a>
+    <a href="#menu" class="btn">
+        Explore Menu
+    </a>
 
-    </div>
+</div>
+```
 
 </header>
 
-
-<!-- =========================
-     PROMO
-========================= -->
+<!-- PROMO -->
 
 <div class="promo">
 
-    🎉 Buy 3 Cookies, Get 1 FREE!
+```
+🎉 Buy 3 Cookies, Get 1 FREE!
 
-    <span>
-        Mix &amp; match any flavor
-    </span>
+<span>
+    Mix &amp; match any flavor
+</span>
+```
 
 </div>
 
-
-<!-- =========================
-     MENU
-========================= -->
+<!-- MENU -->
 
 <section id="menu">
 
-    <h2 class="title">
-        Our Menu
-    </h2>
+```
+<h2 class="title">
+    Our Menu
+</h2>
 
-    <p class="subtitle">
-        Handmade daily • Fresh cookies made with love
-    </p>
+<p class="subtitle">
+    Handmade daily • Fresh cookies made with love
+</p>
 
-    <div class="products">
+<div class="products">
 
+    <!-- NATURE -->
 
-        <!-- NATURE -->
+    <div class="card">
 
-        <div class="card">
-
-            <img
-                src="images/img_4286_web.webp"
-                alt="Cookie Pookie Nature Cookie"
-            >
-
-            <h3>
-                Nature
-            </h3>
-
-            <p>
-                Our classic plain cookie, simple and delicious.
-            </p>
-
-            <div class="price">
-
-                <span>14 DH</span>
-
-                <button
-                    class="order-btn"
-                    onclick="orderDirect('Nature',14)"
-                >
-                    Order
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PISTACHE WHITE -->
-
-        <div class="card">
-
-            <span class="tag">
-                Premium
-            </span>
-
-            <img
-                src="images/img_4266_web.webp"
-                alt="Cookie Pookie Pistache White Cookie"
-            >
-
-            <h3>
-                Pistache White
-            </h3>
-
-            <p>
-                Pistachio sauce with white chocolate and roasted pistachio.
-            </p>
-
-            <div class="price">
-
-                <span>25 DH</span>
-
-                <button
-                    class="order-btn"
-                    onclick="orderDirect('Pistache White',25)"
-                >
-                    Order
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- KINDER -->
-
-        <div
-            class="card"
-            style="cursor:pointer;"
-            onclick="openKinderModal()"
+        <img
+            src="images/img_4286_web.webp"
+            alt="Cookie Pookie Nature Cookie"
         >
 
-            <span class="tag">
-                New
-            </span>
+        <h3>
+            Nature
+        </h3>
 
-            <img
-                src="images/kinder.kinder.jpeg"
-                alt="Cookie Pookie Kinder Cookie"
+        <p>
+            Our classic plain cookie, simple and delicious.
+        </p>
+
+        <div class="price">
+
+            <span>14 DH</span>
+
+            <button
+                class="order-btn"
+                onclick="orderDirect('Nature',14)"
             >
-
-            <h3>
-                Kinder Cookie
-            </h3>
-
-            <p>
-                Gooey Kinder sauce inside — choose your topping.
-            </p>
-
-            <div class="price">
-
-                <span>22 DH</span>
-
-                <button
-                    class="order-btn"
-                    onclick="event.stopPropagation();openKinderModal()"
-                >
-                    Order
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- FRAMBOISE -->
-
-        <div
-            class="card"
-            style="cursor:pointer;"
-            onclick="openFramboiseModal()"
-        >
-
-            <span class="tag">
-                New
-            </span>
-
-            <img
-                src="images/framboise-crosssection.jpg"
-                alt="Cookie Pookie Framboise Cookie"
-            >
-
-            <h3>
-                Framboise
-            </h3>
-
-            <p>
-                Raspberry sauce inside — choose your topping.
-            </p>
-
-            <div class="price">
-
-                <span>22 DH</span>
-
-                <button
-                    class="order-btn"
-                    onclick="event.stopPropagation();openFramboiseModal()"
-                >
-                    Order
-                </button>
-
-            </div>
+                Order
+            </button>
 
         </div>
 
     </div>
 
-</section>
+    <!-- PISTACHE -->
 
+    <div class="card">
 
-<!-- =========================
-     GALLERY
-========================= -->
+        <span class="tag">
+            Premium
+        </span>
 
-<section class="gallery-section">
-
-    <h2 class="title">
-        Our Cookies 🍪
-    </h2>
-
-    <p class="subtitle">
-        Real photos from Cookie Pookie 🤎
-    </p>
-
-    <div class="gallery">
-
-
-        <div class="gallery-item">
-
-            <img
-                src="images/img_4286_web.webp"
-                alt="Cookie Pookie Fresh Cookies"
-                loading="lazy"
-            >
-
-            <div class="gallery-caption">
-                Freshly baked with love 🤎
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img
-                src="images/img_4266_web.webp"
-                alt="Cookie Pookie Pistachio"
-                loading="lazy"
-            >
-
-            <div class="gallery-caption">
-                Pistachio perfection 💚
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img
-                src="images/img_4705_web.webp"
-                alt="Cookie Pookie Gooey Cookie"
-                loading="lazy"
-            >
-
-            <div class="gallery-caption">
-                Look at that gooey center 🤤
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img
-                src="images/img_4217_web.webp"
-                alt="Cookie Pookie Cookies"
-                loading="lazy"
-            >
-
-            <div class="gallery-caption">
-                Made for cookie lovers 🍪
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img
-                src="images/img_4719_web.webp"
-                alt="Cookie Pookie"
-                loading="lazy"
-            >
-
-            <div class="gallery-caption">
-                Your next favorite cookie 🤎
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section class="about">
-
-    <h2 class="title">
-        Why Cookie Pookie?
-    </h2>
-
-    <p>
-        Every cookie is handmade with premium ingredients
-        and baked fresh every day. Our goal is simple:
-        make every bite unforgettable.
-    </p>
-
-
-    <div class="features">
-
-        <div class="feature">
-            🍪 Fresh Every Day
-        </div>
-
-        <div class="feature">
-            🍫 Premium Chocolate
-        </div>
-
-        <div class="feature">
-            ❤️ Homemade
-        </div>
-
-        <div class="feature">
-            🚚 Fast Delivery
-        </div>
-
-        <div class="feature">
-            🎁 Freshly Made
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section class="contact">
-
-    <h2>
-        Order Now 🍪
-    </h2>
-
-    <p>
-        Choose your cookie and order directly on WhatsApp.
-    </p>
-
-    <h3>
-        📞 +212 677 346 109
-    </h3>
-
-    <div class="buttons">
-
-        <!-- WHATSAPP NOW OPENS COOKIE SELECTION -->
-
-        <a
-            class="whatsapp"
-            href="#"
-            onclick="openOrderModal();return false;"
+        <img
+            src="images/img_4266_web.webp"
+            alt="Cookie Pookie Pistache White Cookie"
         >
-            WhatsApp
-        </a>
 
-        <a
-            class="instagram"
-            href="https://www.instagram.com/cookie_pookie.01"
-            target="_blank"
-        >
-            Instagram
-        </a>
+        <h3>
+            Pistache White
+        </h3>
+
+        <p>
+            Pistachio sauce with white chocolate and roasted pistachio.
+        </p>
+
+        <div class="price">
+
+            <span>25 DH</span>
+
+            <button
+                class="order-btn"
+                onclick="orderDirect('Pistache White',25)"
+            >
+                Order
+            </button>
+
+        </div>
 
     </div>
 
-</section>
+    <!-- KINDER -->
 
+    <div
+        class="card"
+        style="cursor:pointer;"
+        onclick="openKinderModal()"
+    >
 
-<!-- =========================
-     FOOTER
-========================= -->
+        <span class="tag">
+            New
+        </span>
 
-<footer>
-
-    © 2026 Cookie Pookie • Freshly Baked With Love 🤎
-
-</footer>
-
-
-<!-- =========================
-     KINDER MODAL
-========================= -->
-
-<div
-    class="modal-overlay"
-    id="kinderModalOverlay"
->
-
-    <div class="modal-box">
-
-        <div class="emoji">
-            🍪
-        </div>
+        <img
+            src="images/kinder.kinder.jpeg"
+            alt="Cookie Pookie Kinder Cookie"
+        >
 
         <h3>
             Kinder Cookie
         </h3>
 
         <p>
-            Gooey Kinder sauce inside.
-            Choose your topping:
+            Gooey Kinder sauce inside — choose your topping.
         </p>
 
+        <div class="price">
 
-        <div class="kinder-options">
+            <span>22 DH</span>
 
-
-            <!-- KINDER BUENO -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseKinder('Kinder Bueno')"
+            <button
+                class="order-btn"
+                onclick="event.stopPropagation();openKinderModal()"
             >
-
-                <img
-                    src="images/kinder.kinder.jpeg"
-                    alt="Kinder Bueno"
-                >
-
-                <span>
-                    Kinder Bueno
-                </span>
-
-            </div>
-
-
-            <!-- KITKAT -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseKinder('KitKat')"
-            >
-
-                <img
-                    src="images/kinder.kitkat.jpeg"
-                    alt="KitKat"
-                >
-
-                <span>
-                    KitKat
-                </span>
-
-            </div>
-
-
-            <!-- MILKA -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseKinder('Milka')"
-            >
-
-                <img
-                    src="images/kinder.milka.jpeg"
-                    alt="Milka"
-                >
-
-                <span>
-                    Milka
-                </span>
-
-            </div>
-
-
-            <!-- OREO EMPTY -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseKinder('Oreo')"
-            >
-
-                <div class="empty-photo">
-                    Oreo photo coming soon
-                </div>
-
-                <span>
-                    Oreo
-                </span>
-
-            </div>
-
+                Order
+            </button>
 
         </div>
 
+    </div>
 
-        <a
-            href="#"
-            class="close-btn"
-            onclick="closeKinderModal();return false;"
+    <!-- FRAMBOISE -->
+
+    <div
+        class="card"
+        style="cursor:pointer;"
+        onclick="openFramboiseModal()"
+    >
+
+        <span class="tag">
+            New
+        </span>
+
+        <img
+            src="images/framboise-crosssection.jpg"
+            alt="Cookie Pookie Framboise Cookie"
         >
-            Close
-        </a>
+
+        <h3>
+            Framboise
+        </h3>
+
+        <p>
+            Raspberry sauce inside — choose your topping.
+        </p>
+
+        <div class="price">
+
+            <span>22 DH</span>
+
+            <button
+                class="order-btn"
+                onclick="event.stopPropagation();openFramboiseModal()"
+            >
+                Order
+            </button>
+
+        </div>
 
     </div>
 
 </div>
+```
 
+</section>
 
-<!-- =========================
-     FRAMBOISE MODAL
-========================= -->
+<!-- GALLERY -->
+
+<section class="gallery-section">
+
+```
+<h2 class="title">
+    Our Cookies 🍪
+</h2>
+
+<p class="subtitle">
+    Real photos from Cookie Pookie 🤎
+</p>
+
+<div class="gallery">
+
+    <div class="gallery-item">
+
+        <img
+            src="images/img_4286_web.webp"
+            alt="Cookie Pookie Fresh Cookies"
+            loading="lazy"
+        >
+
+        <div class="gallery-caption">
+            Freshly baked with love 🤎
+        </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+        <img
+            src="images/img_4266_web.webp"
+            alt="Cookie Pookie Pistachio"
+            loading="lazy"
+        >
+
+        <div class="gallery-caption">
+            Pistachio perfection 💚
+        </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+        <img
+            src="images/img_4705_web.webp"
+            alt="Cookie Pookie Gooey Cookie"
+            loading="lazy"
+        >
+
+        <div class="gallery-caption">
+            Look at that gooey center 🤤
+        </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+        <img
+            src="images/img_4217_web.webp"
+            alt="Cookie Pookie Cookies"
+            loading="lazy"
+        >
+
+        <div class="gallery-caption">
+            Made for cookie lovers 🍪
+        </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+        <img
+            src="images/img_4719_web.webp"
+            alt="Cookie Pookie"
+            loading="lazy"
+        >
+
+        <div class="gallery-caption">
+            Your next favorite cookie 🤎
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about">
+
+```
+<h2 class="title">
+    Why Cookie Pookie?
+</h2>
+
+<p>
+    Every cookie is handmade with premium ingredients
+    and baked fresh every day. Our goal is simple:
+    make every bite unforgettable.
+</p>
+
+<div class="features">
+
+    <div class="feature">
+        🍪 Fresh Every Day
+    </div>
+
+    <div class="feature">
+        🍫 Premium Chocolate
+    </div>
+
+    <div class="feature">
+        ❤️ Homemade
+    </div>
+
+    <div class="feature">
+        🚚 Fast Delivery
+    </div>
+
+    <div class="feature">
+        🎁 Freshly Made
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+```
+<h2>
+    Order Now 🍪
+</h2>
+
+<p>
+    Choose your cookie and order directly on WhatsApp.
+</p>
+
+<h3>
+    📞 +212 677 346 109
+</h3>
+
+<div class="buttons">
+
+    <!-- WhatsApp now opens cookie selection -->
+
+    <button
+        class="btn"
+        onclick="openOrderModal()"
+    >
+        WhatsApp Order
+    </button>
+
+    <a
+        class="instagram"
+        href="https://www.instagram.com/cookie_pookie.01"
+        target="_blank"
+    >
+        Instagram
+    </a>
+
+</div>
+```
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Cookie Pookie • Freshly Baked With Love 🤎
+</footer>
+
+<!-- KINDER MODAL -->
+
+<div
+    class="modal-overlay"
+    id="kinderModalOverlay"
+>
+
+```
+<div class="modal-box">
+
+    <div class="emoji">
+        🍪
+    </div>
+
+    <h3>
+        Kinder Cookie
+    </h3>
+
+    <p>
+        Gooey Kinder sauce inside.<br>
+        Choose your topping:
+    </p>
+
+    <div class="kinder-options">
+
+        <!-- SAME KINDER PHOTO AS MENU -->
+
+        <div
+            class="kinder-option"
+            onclick="chooseKinder('Kinder Bueno')"
+        >
+
+            <img
+                src="images/kinder.kinder.jpeg"
+                alt="Kinder Bueno"
+            >
+
+            <span>
+                Kinder Bueno
+            </span>
+
+        </div>
+
+        <div
+            class="kinder-option"
+            onclick="chooseKinder('KitKat')"
+        >
+
+            <img
+                src="images/kinder.kitkat.jpeg"
+                alt="KitKat"
+            >
+
+            <span>
+                KitKat
+            </span>
+
+        </div>
+
+        <div
+            class="kinder-option"
+            onclick="chooseKinder('Milka')"
+        >
+
+            <img
+                src="images/kinder.milka.jpeg"
+                alt="Milka"
+            >
+
+            <span>
+                Milka
+            </span>
+
+        </div>
+
+        <div
+            class="kinder-option"
+            onclick="chooseKinder('Oreo')"
+        >
+
+            <div class="empty-photo">
+                Oreo photo coming soon
+            </div>
+
+            <span>
+                Oreo
+            </span>
+
+        </div>
+
+    </div>
+
+    <a
+        href="#"
+        class="close-btn"
+        onclick="closeKinderModal();return false;"
+    >
+        Close
+    </a>
+
+</div>
+```
+
+</div>
+
+<!-- FRAMBOISE MODAL -->
 
 <div
     class="modal-overlay"
     id="framboiseModalOverlay"
 >
 
-    <div class="modal-box">
+```
+<div class="modal-box">
 
-        <div class="emoji">
-            🍪
-        </div>
+    <div class="emoji">
+        🍪
+    </div>
 
-        <h3>
-            Framboise Cookie
-        </h3>
+    <h3>
+        Framboise Cookie
+    </h3>
 
-        <p>
-            Raspberry sauce inside.
-            Choose your topping:
-        </p>
+    <p>
+        Raspberry sauce inside.<br>
+        Choose your topping:
+    </p>
 
+    <div class="kinder-options">
 
-        <div class="kinder-options">
-
-
-            <!-- OREO EMPTY -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseFramboise('Oreo')"
-            >
-
-                <div class="empty-photo">
-                    Oreo photo coming soon
-                </div>
-
-                <span>
-                    Oreo
-                </span>
-
-            </div>
-
-
-            <!-- MILKA EMPTY -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseFramboise('Milka')"
-            >
-
-                <div class="empty-photo">
-                    Milka photo coming soon
-                </div>
-
-                <span>
-                    Milka
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-        <a
-            href="#"
-            class="close-btn"
-            onclick="closeFramboiseModal();return false;"
+        <div
+            class="kinder-option"
+            onclick="chooseFramboise('Oreo')"
         >
-            Close
-        </a>
+
+            <div class="empty-photo">
+                Oreo photo coming soon
+            </div>
+
+            <span>
+                Oreo
+            </span>
+
+        </div>
+
+        <div
+            class="kinder-option"
+            onclick="chooseFramboise('Milka')"
+        >
+
+            <div class="empty-photo">
+                Milka photo coming soon
+            </div>
+
+            <span>
+                Milka
+            </span>
+
+        </div>
 
     </div>
 
+    <a
+        href="#"
+        class="close-btn"
+        onclick="closeFramboiseModal();return false;"
+    >
+        Close
+    </a>
+
+</div>
+```
+
 </div>
 
-
-<!-- =========================
-     ORDER COOKIE MODAL
-========================= -->
+<!-- WHATSAPP ORDER MODAL -->
 
 <div
     class="modal-overlay"
     id="orderModalOverlay"
 >
 
-    <div class="modal-box">
+```
+<div class="modal-box">
 
-        <div class="emoji">
-            🍪
-        </div>
+    <div class="emoji">
+        🍪
+    </div>
 
-        <h3>
-            Choose Your Cookie
-        </h3>
+    <h3>
+        Choose Your Cookie
+    </h3>
 
-        <p>
-            What would you like to order?
-        </p>
+    <p>
+        Select your cookie to continue your WhatsApp order.
+    </p>
 
+    <div class="kinder-options">
 
-        <div class="kinder-options">
+        <!-- NATURE -->
 
-
-            <!-- NATURE -->
-
-            <div
-                class="kinder-option"
-                onclick="orderDirect('Nature',14)"
-            >
-
-                <div class="empty-photo">
-                    🍪
-                </div>
-
-                <span>
-                    Nature — 14 DH
-                </span>
-
-            </div>
-
-
-            <!-- PISTACHE -->
-
-            <div
-                class="kinder-option"
-                onclick="orderDirect('Pistache White',25)"
-            >
-
-                <div class="empty-photo">
-                    💚
-                </div>
-
-                <span>
-                    Pistache White — 25 DH
-                </span>
-
-            </div>
-
-
-            <!-- KINDER -->
-
-            <div
-                class="kinder-option"
-                onclick="openKinderFromOrder()"
-            >
-
-                <div class="empty-photo">
-                    🍫
-                </div>
-
-                <span>
-                    Kinder — 22 DH
-                </span>
-
-            </div>
-
-
-            <!-- FRAMBOISE -->
-
-            <div
-                class="kinder-option"
-                onclick="openFramboiseFromOrder()"
-            >
-
-                <div class="empty-photo">
-                    ❤️
-                </div>
-
-                <span>
-                    Framboise — 22 DH
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-        <a
-            href="#"
-            class="close-btn"
-            onclick="closeOrderModal();return false;"
+        <div
+            class="kinder-option"
+            onclick="orderDirect('Nature',14)"
         >
-            Close
-        </a>
+
+            <img
+                src="images/img_4286_web.webp"
+                alt="Nature Cookie"
+            >
+
+            <span>
+                Nature — 14 DH
+            </span>
+
+        </div>
+
+        <!-- PISTACHE -->
+
+        <div
+            class="kinder-option"
+            onclick="orderDirect('Pistache White',25)"
+        >
+
+            <img
+                src="images/img_4266_web.webp"
+                alt="Pistache White"
+            >
+
+            <span>
+                Pistache White — 25 DH
+            </span>
+
+        </div>
+
+        <!-- KINDER - SAME PHOTO AS MENU -->
+
+        <div
+            class="kinder-option"
+            onclick="openKinderFromOrder()"
+        >
+
+            <img
+                src="images/kinder.kinder.jpeg"
+                alt="Kinder Cookie"
+            >
+
+            <span>
+                Kinder Cookie — 22 DH
+            </span>
+
+        </div>
+
+        <!-- FRAMBOISE -->
+
+        <div
+            class="kinder-option"
+            onclick="openFramboiseFromOrder()"
+        >
+
+            <img
+                src="images/framboise-crosssection.jpg"
+                alt="Framboise Cookie"
+            >
+
+            <span>
+                Framboise — 22 DH
+            </span>
+
+        </div>
 
     </div>
 
+    <a
+        href="#"
+        class="close-btn"
+        onclick="closeOrderModal();return false;"
+    >
+        Close
+    </a>
+
 </div>
+```
 
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+</div>
 
 <script>
 
-
 /* =========================
-   DIRECT ORDER
+   WHATSAPP
 ========================= */
 
 function orderDirect(cookie, price){
@@ -1411,7 +1319,6 @@ function orderDirect(cookie, price){
     window.open(url, "_blank");
 
     closeOrderModal();
-
 }
 
 
@@ -1427,7 +1334,6 @@ function openKinderModal(){
 
 }
 
-
 function closeKinderModal(){
 
     document
@@ -1435,7 +1341,6 @@ function closeKinderModal(){
         .classList.remove("show");
 
 }
-
 
 function chooseKinder(topping){
 
@@ -1450,7 +1355,6 @@ function chooseKinder(topping){
 
     closeKinderModal();
     closeOrderModal();
-
 }
 
 
@@ -1466,7 +1370,6 @@ function openFramboiseModal(){
 
 }
 
-
 function closeFramboiseModal(){
 
     document
@@ -1474,7 +1377,6 @@ function closeFramboiseModal(){
         .classList.remove("show");
 
 }
-
 
 function chooseFramboise(topping){
 
@@ -1489,12 +1391,11 @@ function chooseFramboise(topping){
 
     closeFramboiseModal();
     closeOrderModal();
-
 }
 
 
 /* =========================
-   ORDER MODAL
+   WHATSAPP ORDER MENU
 ========================= */
 
 function openOrderModal(){
@@ -1505,7 +1406,6 @@ function openOrderModal(){
 
 }
 
-
 function closeOrderModal(){
 
     document
@@ -1514,20 +1414,16 @@ function closeOrderModal(){
 
 }
 
-
 function openKinderFromOrder(){
 
     closeOrderModal();
-
     openKinderModal();
 
 }
 
-
 function openFramboiseFromOrder(){
 
     closeOrderModal();
-
     openFramboiseModal();
 
 }
@@ -1548,25 +1444,16 @@ document.addEventListener("click", function(event){
     const orderModal =
         document.getElementById("orderModalOverlay");
 
-
     if(event.target === kinderModal){
-
         closeKinderModal();
-
     }
-
 
     if(event.target === framboiseModal){
-
         closeFramboiseModal();
-
     }
 
-
     if(event.target === orderModal){
-
         closeOrderModal();
-
     }
 
 });
@@ -1581,9 +1468,7 @@ document.addEventListener("keydown", function(event){
     if(event.key === "Escape"){
 
         closeKinderModal();
-
         closeFramboiseModal();
-
         closeOrderModal();
 
     }
@@ -1594,4 +1479,3 @@ document.addEventListener("keydown", function(event){
 
 </body>
 </html>
-```
