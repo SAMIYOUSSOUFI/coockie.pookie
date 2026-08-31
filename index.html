@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -526,6 +527,8 @@ section{
     font-weight:bold;
     text-decoration:none;
     transition:.3s;
+    cursor:pointer;
+    border:none;
 }
 
 .buttons a:hover{
@@ -664,6 +667,7 @@ footer{
 
 <body>
 
+
 <!-- =========================
      HERO
 ========================= -->
@@ -717,6 +721,7 @@ footer{
     </p>
 
     <div class="products">
+
 
         <!-- NATURE -->
 
@@ -890,6 +895,7 @@ footer{
 
     <div class="gallery">
 
+
         <div class="gallery-item">
 
             <img
@@ -964,6 +970,7 @@ footer{
 
         </div>
 
+
     </div>
 
 </section>
@@ -984,6 +991,7 @@ footer{
         and baked fresh every day. Our goal is simple:
         make every bite unforgettable.
     </p>
+
 
     <div class="features">
 
@@ -1013,7 +1021,7 @@ footer{
 
 
 <!-- =========================
-     CONTACT / ORDER NOW
+     CONTACT
 ========================= -->
 
 <section class="contact">
@@ -1032,10 +1040,12 @@ footer{
 
     <div class="buttons">
 
+        <!-- WHATSAPP NOW OPENS COOKIE SELECTION -->
+
         <a
             class="whatsapp"
-            href="https://wa.me/212677346109"
-            target="_blank"
+            href="#"
+            onclick="openOrderModal();return false;"
         >
             WhatsApp
         </a>
@@ -1088,7 +1098,9 @@ footer{
             Choose your topping:
         </p>
 
+
         <div class="kinder-options">
+
 
             <!-- KINDER BUENO -->
 
@@ -1164,7 +1176,9 @@ footer{
 
             </div>
 
+
         </div>
+
 
         <a
             href="#"
@@ -1203,7 +1217,9 @@ footer{
             Choose your topping:
         </p>
 
+
         <div class="kinder-options">
+
 
             <!-- OREO EMPTY -->
 
@@ -1240,7 +1256,9 @@ footer{
 
             </div>
 
+
         </div>
+
 
         <a
             href="#"
@@ -1256,13 +1274,129 @@ footer{
 
 
 <!-- =========================
+     ORDER COOKIE MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="orderModalOverlay"
+>
+
+    <div class="modal-box">
+
+        <div class="emoji">
+            🍪
+        </div>
+
+        <h3>
+            Choose Your Cookie
+        </h3>
+
+        <p>
+            What would you like to order?
+        </p>
+
+
+        <div class="kinder-options">
+
+
+            <!-- NATURE -->
+
+            <div
+                class="kinder-option"
+                onclick="orderDirect('Nature',14)"
+            >
+
+                <div class="empty-photo">
+                    🍪
+                </div>
+
+                <span>
+                    Nature — 14 DH
+                </span>
+
+            </div>
+
+
+            <!-- PISTACHE -->
+
+            <div
+                class="kinder-option"
+                onclick="orderDirect('Pistache White',25)"
+            >
+
+                <div class="empty-photo">
+                    💚
+                </div>
+
+                <span>
+                    Pistache White — 25 DH
+                </span>
+
+            </div>
+
+
+            <!-- KINDER -->
+
+            <div
+                class="kinder-option"
+                onclick="openKinderFromOrder()"
+            >
+
+                <div class="empty-photo">
+                    🍫
+                </div>
+
+                <span>
+                    Kinder — 22 DH
+                </span>
+
+            </div>
+
+
+            <!-- FRAMBOISE -->
+
+            <div
+                class="kinder-option"
+                onclick="openFramboiseFromOrder()"
+            >
+
+                <div class="empty-photo">
+                    ❤️
+                </div>
+
+                <span>
+                    Framboise — 22 DH
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <a
+            href="#"
+            class="close-btn"
+            onclick="closeOrderModal();return false;"
+        >
+            Close
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
      JAVASCRIPT
 ========================= -->
 
 <script>
 
+
 /* =========================
-   DIRECT WHATSAPP ORDER
+   DIRECT ORDER
 ========================= */
 
 function orderDirect(cookie, price){
@@ -1276,11 +1410,13 @@ function orderDirect(cookie, price){
 
     window.open(url, "_blank");
 
+    closeOrderModal();
+
 }
 
 
 /* =========================
-   KINDER MODAL
+   KINDER
 ========================= */
 
 function openKinderModal(){
@@ -1313,12 +1449,13 @@ function chooseKinder(topping){
     window.open(url, "_blank");
 
     closeKinderModal();
+    closeOrderModal();
 
 }
 
 
 /* =========================
-   FRAMBOISE MODAL
+   FRAMBOISE
 ========================= */
 
 function openFramboiseModal(){
@@ -1351,12 +1488,53 @@ function chooseFramboise(topping){
     window.open(url, "_blank");
 
     closeFramboiseModal();
+    closeOrderModal();
 
 }
 
 
 /* =========================
-   CLICK OUTSIDE MODAL
+   ORDER MODAL
+========================= */
+
+function openOrderModal(){
+
+    document
+        .getElementById("orderModalOverlay")
+        .classList.add("show");
+
+}
+
+
+function closeOrderModal(){
+
+    document
+        .getElementById("orderModalOverlay")
+        .classList.remove("show");
+
+}
+
+
+function openKinderFromOrder(){
+
+    closeOrderModal();
+
+    openKinderModal();
+
+}
+
+
+function openFramboiseFromOrder(){
+
+    closeOrderModal();
+
+    openFramboiseModal();
+
+}
+
+
+/* =========================
+   CLICK OUTSIDE MODALS
 ========================= */
 
 document.addEventListener("click", function(event){
@@ -1366,6 +1544,9 @@ document.addEventListener("click", function(event){
 
     const framboiseModal =
         document.getElementById("framboiseModalOverlay");
+
+    const orderModal =
+        document.getElementById("orderModalOverlay");
 
 
     if(event.target === kinderModal){
@@ -1378,6 +1559,13 @@ document.addEventListener("click", function(event){
     if(event.target === framboiseModal){
 
         closeFramboiseModal();
+
+    }
+
+
+    if(event.target === orderModal){
+
+        closeOrderModal();
 
     }
 
@@ -1396,6 +1584,8 @@ document.addEventListener("keydown", function(event){
 
         closeFramboiseModal();
 
+        closeOrderModal();
+
     }
 
 });
@@ -1404,3 +1594,4 @@ document.addEventListener("keydown", function(event){
 
 </body>
 </html>
+```
