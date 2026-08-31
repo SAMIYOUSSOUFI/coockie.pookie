@@ -295,8 +295,6 @@ section{
     display:block;
 }
 
-/* Empty place for images you will add later */
-
 .empty-photo{
     background:#fff8fa;
     border:2px dashed #e5a4b8;
@@ -401,7 +399,7 @@ section{
 }
 
 /* =========================
-   MODALS
+   MODAL
 ========================= */
 
 .modal-overlay{
@@ -423,9 +421,11 @@ section{
     background:white;
     color:#3b2418;
     border-radius:24px;
-    max-width:400px;
+    max-width:430px;
     width:100%;
-    padding:40px 30px;
+    max-height:90vh;
+    overflow-y:auto;
+    padding:35px 30px;
     text-align:center;
     animation:pop .35s ease;
 }
@@ -443,8 +443,8 @@ section{
 }
 
 .modal-box .emoji{
-    font-size:60px;
-    margin-bottom:10px;
+    font-size:55px;
+    margin-bottom:5px;
 }
 
 .modal-box h3{
@@ -454,9 +454,97 @@ section{
 }
 
 .modal-box p{
-    font-size:16px;
+    font-size:15px;
     color:#666;
-    margin-bottom:25px;
+    margin-bottom:20px;
+}
+
+/* =========================
+   ORDER COOKIE BUTTONS
+========================= */
+
+.order-cookie{
+    width:100%;
+    border:none;
+    background:#fff1f5;
+    border:2px solid transparent;
+    border-radius:16px;
+    padding:16px;
+    margin:8px 0;
+    cursor:pointer;
+    text-align:left;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:.2s;
+    color:#3b2418;
+}
+
+.order-cookie:hover{
+    border-color:#e89ab2;
+    transform:translateY(-2px);
+}
+
+.order-cookie strong{
+    font-size:16px;
+}
+
+.order-cookie small{
+    display:block;
+    color:#8c6d78;
+    margin-top:3px;
+}
+
+.order-price{
+    font-weight:700;
+    color:#d77f9d;
+    white-space:nowrap;
+}
+
+/* =========================
+   CONFIRM ORDER
+========================= */
+
+.order-summary{
+    background:#fff1f5;
+    border-radius:18px;
+    padding:20px;
+    margin:20px 0;
+}
+
+.order-summary h4{
+    font-size:18px;
+    margin-bottom:10px;
+    color:#d77f9d;
+}
+
+.order-summary p{
+    margin:5px 0;
+    color:#555;
+}
+
+.order-whatsapp{
+    width:100%;
+    display:block;
+    padding:15px;
+    background:#25D366;
+    color:white;
+    border:none;
+    border-radius:50px;
+    font-weight:700;
+    font-size:16px;
+    cursor:pointer;
+    text-decoration:none;
+    margin-top:15px;
+}
+
+.back-btn{
+    border:none;
+    background:none;
+    color:#999;
+    cursor:pointer;
+    font-size:14px;
+    margin-top:12px;
 }
 
 /* =========================
@@ -624,8 +712,8 @@ footer{
         text-align:center;
     }
 
-    .kinder-options{
-        grid-template-columns:repeat(2,1fr);
+    .modal-box{
+        padding:30px 20px;
     }
 
 }
@@ -635,6 +723,7 @@ footer{
 </head>
 
 <body>
+
 
 <!-- =========================
      HERO
@@ -966,22 +1055,21 @@ footer{
     </h2>
 
     <p>
-        Call us or message us on WhatsApp &amp; Instagram.
+        Choose your cookie and customize your topping.
     </p>
 
     <h3>
         📞 +212 677 346 109
     </h3>
 
-
     <div class="buttons">
 
         <a
             class="whatsapp"
-            href="https://wa.me/212677346109"
-            target="_blank"
+            href="javascript:void(0)"
+            onclick="openOrderModal()"
         >
-            WhatsApp
+            Order Now
         </a>
 
         <a
@@ -1008,196 +1096,333 @@ footer{
 </footer>
 
 
-<!-- =========================
-     KINDER MODAL
-========================= -->
+<!-- ==================================================
+     ORDER MODAL
+================================================== -->
 
 <div
     class="modal-overlay"
-    id="kinderModalOverlay"
+    id="orderModalOverlay"
 >
 
-    <div class="modal-box">
+    <div class="modal-box" id="orderBox">
 
-        <div class="emoji">
-            🍪
-        </div>
+        <!-- STEP 1 -->
 
-        <h3>
-            Kinder Cookie
-        </h3>
+        <div id="step1">
 
-        <p>
-            Gooey Kinder sauce inside.
-            Choose your topping:
-        </p>
+            <div class="emoji">
+                🍪
+            </div>
+
+            <h3>
+                Choose Your Cookie
+            </h3>
+
+            <p>
+                What would you like to order?
+            </p>
 
 
-        <div class="kinder-options">
-
-
-            <!-- KINDER BUENO -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseKinder('Kinder Bueno')"
+            <button
+                class="order-cookie"
+                onclick="selectCookie('Nature',14,false)"
             >
 
-                <img
-                    src="images/kinder.kinder.jpeg"
-                    alt="Kinder Bueno"
+                <div>
+                    <strong>Nature</strong>
+                    <small>Classic plain cookie</small>
+                </div>
+
+                <span class="order-price">
+                    14 DH
+                </span>
+
+            </button>
+
+
+            <button
+                class="order-cookie"
+                onclick="selectCookie('Pistache White',25,false)"
+            >
+
+                <div>
+                    <strong>Pistache White</strong>
+                    <small>Pistachio + white chocolate</small>
+                </div>
+
+                <span class="order-price">
+                    25 DH
+                </span>
+
+            </button>
+
+
+            <button
+                class="order-cookie"
+                onclick="selectCookie('Kinder Cookie',22,true,'kinder')"
+            >
+
+                <div>
+                    <strong>Kinder Cookie</strong>
+                    <small>Choose your topping</small>
+                </div>
+
+                <span class="order-price">
+                    22 DH
+                </span>
+
+            </button>
+
+
+            <button
+                class="order-cookie"
+                onclick="selectCookie('Framboise Cookie',22,true,'framboise')"
+            >
+
+                <div>
+                    <strong>Framboise Cookie</strong>
+                    <small>Choose your topping</small>
+                </div>
+
+                <span class="order-price">
+                    22 DH
+                </span>
+
+            </button>
+
+
+            <button
+                class="back-btn"
+                onclick="closeOrderModal()"
+            >
+                Close
+            </button>
+
+        </div>
+
+
+        <!-- STEP 2 KINDER -->
+
+        <div id="stepKinder" style="display:none;">
+
+            <div class="emoji">
+                🍫
+            </div>
+
+            <h3>
+                Kinder Cookie
+            </h3>
+
+            <p>
+                Choose your topping:
+            </p>
+
+
+            <div class="kinder-options">
+
+
+                <div
+                    class="kinder-option"
+                    onclick="selectTopping('Kinder Bueno')"
                 >
 
-                <span>
-                    Kinder Bueno
-                </span>
+                    <img
+                        src="images/kinder.kinder.jpeg"
+                        alt="Kinder Bueno"
+                    >
 
-            </div>
+                    <span>
+                        Kinder Bueno
+                    </span>
+
+                </div>
 
 
-            <!-- KITKAT -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseKinder('KitKat')"
-            >
-
-                <img
-                    src="images/kinder.kitkat.jpeg"
-                    alt="KitKat"
+                <div
+                    class="kinder-option"
+                    onclick="selectTopping('KitKat')"
                 >
 
-                <span>
-                    KitKat
-                </span>
+                    <img
+                        src="images/kinder.kitkat.jpeg"
+                        alt="KitKat"
+                    >
 
-            </div>
+                    <span>
+                        KitKat
+                    </span>
+
+                </div>
 
 
-            <!-- MILKA -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseKinder('Milka')"
-            >
-
-                <img
-                    src="images/kinder.milka.jpeg"
-                    alt="Milka"
+                <div
+                    class="kinder-option"
+                    onclick="selectTopping('Milka')"
                 >
 
-                <span>
-                    Milka
-                </span>
+                    <img
+                        src="images/kinder.milka.jpeg"
+                        alt="Milka"
+                    >
+
+                    <span>
+                        Milka
+                    </span>
+
+                </div>
+
+
+                <!-- OREO IMAGE TO ADD LATER -->
+
+                <div
+                    class="kinder-option"
+                    onclick="selectTopping('Oreo')"
+                >
+
+                    <div class="empty-photo"></div>
+
+                    <span>
+                        Oreo
+                    </span>
+
+                </div>
+
 
             </div>
 
 
-            <!-- OREO -->
-            <!-- PHOTO WILL BE ADDED LATER -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseKinder('Oreo')"
+            <button
+                class="back-btn"
+                onclick="backToCookies()"
             >
-
-                <div class="empty-photo"></div>
-
-                <span>
-                    Oreo
-                </span>
-
-            </div>
-
+                ← Back
+            </button>
 
         </div>
 
 
-        <a
-            href="#"
-            onclick="closeKinderModal();return false;"
-            style="color:#999;font-size:14px;"
-        >
-            Close
-        </a>
+        <!-- STEP 2 FRAMBOISE -->
 
-    </div>
+        <div id="stepFramboise" style="display:none;">
 
-</div>
+            <div class="emoji">
+                🍓
+            </div>
 
+            <h3>
+                Framboise Cookie
+            </h3>
 
-<!-- =========================
-     FRAMBOISE MODAL
-========================= -->
-
-<div
-    class="modal-overlay"
-    id="framboiseModalOverlay"
->
-
-    <div class="modal-box">
-
-        <div class="emoji">
-            🍪
-        </div>
-
-        <h3>
-            Framboise Cookie
-        </h3>
-
-        <p>
-            Raspberry sauce inside.
-            Choose your topping:
-        </p>
+            <p>
+                Choose your topping:
+            </p>
 
 
-        <div class="kinder-options">
+            <div class="kinder-options">
 
 
-            <!-- FRAMBOISE OREO -->
-            <!-- PHOTO WILL BE ADDED LATER -->
+                <!-- OREO IMAGE TO ADD LATER -->
 
-            <div
-                class="kinder-option"
-                onclick="chooseFramboise('Oreo')"
-            >
+                <div
+                    class="kinder-option"
+                    onclick="selectTopping('Oreo')"
+                >
 
-                <div class="empty-photo"></div>
+                    <div class="empty-photo"></div>
 
-                <span>
-                    Oreo
-                </span>
+                    <span>
+                        Oreo
+                    </span>
+
+                </div>
+
+
+                <!-- MILKA IMAGE TO ADD LATER -->
+
+                <div
+                    class="kinder-option"
+                    onclick="selectTopping('Milka')"
+                >
+
+                    <div class="empty-photo"></div>
+
+                    <span>
+                        Milka
+                    </span>
+
+                </div>
+
 
             </div>
 
 
-            <!-- FRAMBOISE MILKA -->
-            <!-- PHOTO WILL BE ADDED LATER -->
-
-            <div
-                class="kinder-option"
-                onclick="chooseFramboise('Milka')"
+            <button
+                class="back-btn"
+                onclick="backToCookies()"
             >
-
-                <div class="empty-photo"></div>
-
-                <span>
-                    Milka
-                </span>
-
-            </div>
-
+                ← Back
+            </button>
 
         </div>
 
 
-        <a
-            href="#"
-            onclick="closeFramboiseModal();return false;"
-            style="color:#999;font-size:14px;"
-        >
-            Close
-        </a>
+        <!-- STEP 3 CONFIRM -->
+
+        <div id="stepConfirm" style="display:none;">
+
+            <div class="emoji">
+                🛒
+            </div>
+
+            <h3>
+                Your Order
+            </h3>
+
+            <p>
+                Check your order before sending it.
+            </p>
+
+
+            <div class="order-summary">
+
+                <h4>
+                    Cookie Pookie 🍪
+                </h4>
+
+                <p id="summaryCookie">
+                    -
+                </p>
+
+                <p id="summaryTopping">
+                    -
+                </p>
+
+                <p id="summaryPrice">
+                    -
+                </p>
+
+            </div>
+
+
+            <a
+                id="whatsappOrder"
+                class="order-whatsapp"
+                href="#"
+                target="_blank"
+            >
+                📲 Order on WhatsApp
+            </a>
+
+
+            <button
+                class="back-btn"
+                onclick="backToCookies()"
+            >
+                ← Choose Again
+            </button>
+
+        </div>
 
     </div>
 
@@ -1210,97 +1435,209 @@ footer{
 
 <script>
 
-function openKinderModal(){
+let selectedCookie = "";
+let selectedPrice = 0;
+let selectedTopping = "";
+let selectedType = "";
+
+
+/* =========================
+   OPEN ORDER
+========================= */
+
+function openOrderModal(){
 
     document
-        .getElementById("kinderModalOverlay")
+        .getElementById("orderModalOverlay")
         .classList.add("show");
 
-}
-
-
-function closeKinderModal(){
-
-    document
-        .getElementById("kinderModalOverlay")
-        .classList.remove("show");
-
-}
-
-
-function chooseKinder(topping){
-
-    const message =
-        `Salam! Bghit Kinder Cookie b ${topping} (22 DH) 🍪`;
-
-    const url =
-        "https://wa.me/212677346109?text="
-        + encodeURIComponent(message);
-
-    window.open(url, "_blank");
-
-    closeKinderModal();
-
-}
-
-
-function openFramboiseModal(){
-
-    document
-        .getElementById("framboiseModalOverlay")
-        .classList.add("show");
-
-}
-
-
-function closeFramboiseModal(){
-
-    document
-        .getElementById("framboiseModalOverlay")
-        .classList.remove("show");
-
-}
-
-
-function chooseFramboise(topping){
-
-    const message =
-        `Salam! Bghit Framboise Cookie b ${topping} (22 DH) 🍪`;
-
-    const url =
-        "https://wa.me/212677346109?text="
-        + encodeURIComponent(message);
-
-    window.open(url, "_blank");
-
-    closeFramboiseModal();
+    showStep("step1");
 
 }
 
 
 /* =========================
-   CLOSE MODAL OUTSIDE
+   CLOSE ORDER
 ========================= */
 
-document.addEventListener("click", function(event){
+function closeOrderModal(){
 
-    const kinderModal =
-        document.getElementById("kinderModalOverlay");
+    document
+        .getElementById("orderModalOverlay")
+        .classList.remove("show");
 
-    const framboiseModal =
-        document.getElementById("framboiseModalOverlay");
+}
 
 
-    if(event.target === kinderModal){
+/* =========================
+   SHOW STEP
+========================= */
 
-        closeKinderModal();
+function showStep(step){
+
+    document.getElementById("step1").style.display = "none";
+
+    document.getElementById("stepKinder").style.display = "none";
+
+    document.getElementById("stepFramboise").style.display = "none";
+
+    document.getElementById("stepConfirm").style.display = "none";
+
+
+    document.getElementById(step).style.display = "block";
+
+}
+
+
+/* =========================
+   SELECT COOKIE
+========================= */
+
+function selectCookie(
+    cookie,
+    price,
+    needsTopping,
+    type
+){
+
+    selectedCookie = cookie;
+
+    selectedPrice = price;
+
+    selectedTopping = "";
+
+    selectedType = type || "";
+
+
+    if(needsTopping){
+
+        if(type === "kinder"){
+
+            showStep("stepKinder");
+
+        }
+
+        else if(type === "framboise"){
+
+            showStep("stepFramboise");
+
+        }
+
+    }
+
+    else{
+
+        showConfirmation();
+
+    }
+
+}
+
+
+/* =========================
+   SELECT TOPPING
+========================= */
+
+function selectTopping(topping){
+
+    selectedTopping = topping;
+
+    showConfirmation();
+
+}
+
+
+/* =========================
+   CONFIRMATION
+========================= */
+
+function showConfirmation(){
+
+    document.getElementById("summaryCookie").textContent =
+        "Cookie: " + selectedCookie;
+
+
+    if(selectedTopping){
+
+        document.getElementById("summaryTopping").textContent =
+            "Topping: " + selectedTopping;
+
+    }
+
+    else{
+
+        document.getElementById("summaryTopping").textContent =
+            "Topping: None";
 
     }
 
 
-    if(event.target === framboiseModal){
+    document.getElementById("summaryPrice").textContent =
+        "Price: " + selectedPrice + " DH";
 
-        closeFramboiseModal();
+
+    let message =
+        "Salam! Bghit norder:%0A%0A" +
+        "🍪 Cookie: " + selectedCookie + "%0A";
+
+
+    if(selectedTopping){
+
+        message +=
+            "🍫 Topping: " + selectedTopping + "%0A";
+
+    }
+
+
+    message +=
+        "💰 Price: " + selectedPrice + " DH";
+
+
+    const whatsappURL =
+        "https://wa.me/212677346109?text=" +
+        encodeURIComponent(
+            `Salam! Bghit norder:
+
+🍪 Cookie: ${selectedCookie}
+${selectedTopping ? "🍫 Topping: " + selectedTopping + "\n" : ""}
+💰 Price: ${selectedPrice} DH`
+        );
+
+
+    document
+        .getElementById("whatsappOrder")
+        .href = whatsappURL;
+
+
+    showStep("stepConfirm");
+
+}
+
+
+/* =========================
+   BACK TO COOKIES
+========================= */
+
+function backToCookies(){
+
+    showStep("step1");
+
+}
+
+
+/* =========================
+   CLICK OUTSIDE MODAL
+========================= */
+
+document.addEventListener("click", function(event){
+
+    const modal =
+        document.getElementById("orderModalOverlay");
+
+
+    if(event.target === modal){
+
+        closeOrderModal();
 
     }
 
@@ -1308,15 +1645,14 @@ document.addEventListener("click", function(event){
 
 
 /* =========================
-   ESC CLOSES MODAL
+   ESC CLOSE
 ========================= */
 
 document.addEventListener("keydown", function(event){
 
     if(event.key === "Escape"){
 
-        closeKinderModal();
-        closeFramboiseModal();
+        closeOrderModal();
 
     }
 
